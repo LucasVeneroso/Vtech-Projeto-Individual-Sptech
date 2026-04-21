@@ -1,1 +1,0 @@
-# Vtech-Projeto-Individual-Sptech
