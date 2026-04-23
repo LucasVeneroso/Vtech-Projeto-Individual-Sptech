@@ -5,7 +5,7 @@ body {
   padding: 0;
   font-family:
     "Barlow", "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0f172a;
+  background-color: #020B1A ;
 }
 
 :root {
@@ -44,7 +44,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: #32b9cd;
 }
 
 .agora {
@@ -57,7 +57,7 @@ body {
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  color: #32b9cd;
 }
 
 .titulo {
@@ -183,6 +183,14 @@ body {
   margin: 30px auto 20px auto;
   text-align: center;
 }
+.titulo-sobre h3 {
+  background-color: #32b9cd;
+  color: white;
+  margin: 15px 0 20px 0;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 28px;
+}
 
 .conteudo-sobre {
   display: flex;
@@ -218,12 +226,21 @@ body {
   color: black;
   font-size: 22px;
 }
-
+.trilha-vida {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 10px 80px 10px;
+}
+.trilha-vida img{
+  width: 60%;
+  height: 50%;
+}
 
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  background-color: rgba(21, 117, 200, 0.694);
   height: 150px;
   color: #fff;
   display: flex;
