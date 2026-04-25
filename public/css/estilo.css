@@ -19,6 +19,9 @@ body {
   --tamanho-login: calc(
     130vh - var(--tamanho-header) - var(--tamanho-footer) - 2px
   );
+  --tamanho-cadastro: calc(
+    160vh - var(--tamanho-header) - var(--tamanho-footer) - 2px
+  );
   --tamanho-footer: 400px;
 }
 
@@ -39,7 +42,10 @@ body {
   height: 100%;
 }
 .header .container img {
-  width: 7%;
+  width: 9%;
+}
+.header .container a {
+  width: 100%;
 }
 
 .header a {
@@ -298,8 +304,18 @@ body {
 .login {
   height: var(--tamanho-login);
 }
+.cadastro {
+  height: var(--tamanho-cadastro);
+}
 
 .login .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 110%;
+}
+.cadastro .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -376,6 +392,7 @@ body {
   background-color: white;
   margin: 20px;
   transition: 0.5s;
+  cursor: pointer;
 }
 .botao button:hover {
   background-color: #32b9cd;
@@ -400,27 +417,32 @@ body {
   align-items: center;
   justify-content: center;
   margin-right: 40px;
-  width: 70%;
-  height: 90%;
+  width: 85%;
+  height: 100%;
 }
 .botao_redirecionar_cadastro {
   display: flex;
   justify-content: center;
 }
 .botao_redirecionar_cadastro button {
-  font-size: 26px;
+  font-size: 30px;
   width: 100%;
-  height: 50%;
+  height: 60%;
   border-radius: 30px;
   border: solid 3px #32b9cd;
   background-color: white;
   margin: 20px;
   transition: 0.6s;
+  cursor: pointer;  
 }
 .botao_redirecionar_cadastro button:hover {
   background-color: #32b9cd;
   color: white;
   transform: scale(1.3);
+}
+.botao_redirecionar_cadastro #login button{
+  width: 80%;
+  height: 95%;
 }
 
 .loading-div {
