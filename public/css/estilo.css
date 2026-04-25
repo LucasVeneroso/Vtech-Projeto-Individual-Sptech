@@ -400,13 +400,15 @@ body {
   align-items: center;
   justify-content: center;
   margin-right: 40px;
+  width: 70%;
+  height: 90%;
 }
 .botao_redirecionar_cadastro {
   display: flex;
   justify-content: center;
 }
 .botao_redirecionar_cadastro button {
-  font-size: 18px;
+  font-size: 26px;
   width: 100%;
   height: 50%;
   border-radius: 30px;
