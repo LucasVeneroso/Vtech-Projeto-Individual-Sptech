@@ -541,18 +541,70 @@ input:hover {
   width: 50px;
 }
 
-/* SIMULADOR */
+/* Numvem */
 
-.simulador {
-  color: white;
-}
-
-.simulador .container {
+.historia {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   flex-direction: column;
-  overflow: scroll;
-  height: var(--tamanho-simulador);
+  padding: 60px;
+  margin-bottom: 100px;
+}
+.historia .container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  color: #e5e5e5;
+
+}
+.titulo-historia {
+  text-align: center;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.titulo-historia h1 {
+  font-size: 46px;
+  text-align: center;
+  text-shadow: 0px 1px 20px aqua;
+  color: #32b9cd;
+  margin: 90px 0px 30px 0px;
+}
+.conteudo-historia{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.historia .container .conteudo-historia p{
+  width: 60%;
+  font-size: 20px;
+  text-align: center;
+
+}
+.historia .container .conteudo-historia h1{
+  width: 60%;
+  font-size: 40px;
+  text-align: center;
+  text-shadow: 0px 1px 20px aqua;
+  color: #32b9cd;
 }
 
+.tipos-servicos{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.servicos {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+.servicos h2{
+
+}
 /* ALERTA */
 
 #alerta {
