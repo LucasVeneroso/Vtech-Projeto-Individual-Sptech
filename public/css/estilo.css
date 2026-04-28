@@ -6,7 +6,7 @@ body {
     "Barlow", "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #020b1a;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -137,6 +137,7 @@ html{
 .social {
   background-color: #e5e5e5;
   display: flex;
+  flex-direction: column;
 }
 
 .social .container {
@@ -178,9 +179,8 @@ html{
   margin: 30px 10px 50px 10px;
   border-radius: 10px;
   transition: 0.6s;
-
 }
-.box:hover{
+.box:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(50, 185, 205, 1);
 }
@@ -557,7 +557,6 @@ input:hover {
   text-align: center;
   align-items: center;
   color: #e5e5e5;
-
 }
 .titulo-historia {
   text-align: center;
@@ -572,19 +571,18 @@ input:hover {
   color: #32b9cd;
   margin: 90px 0px 30px 0px;
 }
-.conteudo-historia{
+.conteudo-historia {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.historia .container .conteudo-historia p{
+.historia .container .conteudo-historia p {
   width: 60%;
   font-size: 20px;
   text-align: center;
-
 }
-.historia .container .conteudo-historia h1{
+.historia .container .conteudo-historia h1 {
   width: 60%;
   font-size: 40px;
   text-align: center;
@@ -592,7 +590,7 @@ input:hover {
   color: #32b9cd;
 }
 
-.tipos-servicos{
+.tipos-servicos {
   display: flex;
   flex-direction: column;
 }
@@ -610,6 +608,7 @@ input:hover {
   color: white;
   padding: 0px 10px;
   width: 40%;
+  text-align: center;
 }
 .texto-servico h2 {
   color: #32b9cd;
@@ -622,7 +621,7 @@ input:hover {
   margin: 20px 28px 20px 80px;
   padding: 10px;
 }
-#servidor img{
+#servidor img {
   width: 90%;
   margin: 30px 10px 80px 80px;
 }
@@ -633,16 +632,16 @@ input:hover {
 }
 #datacenter_amazon img {
   width: 92%;
-  margin: 10px 0px 100px ;
+  margin: 10px 0px 100px;
 }
 #paas {
   margin: 30px 130px 20px 0px;
-  padding: 10px;
-  width: 60%;
+  padding: 18px;
+  width: 68%;
 }
 #hostinger img {
   width: 65%;
-  margin: 120px 0px 80px 200px;
+  margin: 120px 0px 80px 230px;
 }
 #saas {
   margin: 10px 0px 50px 300px;
@@ -650,10 +649,47 @@ input:hover {
   width: 60%;
 }
 
-#gmail_outlook img{
+#gmail_outlook img {
   width: 60%;
-  margin: 70px 0px 100px 290px;
+  margin: 110px 0px 100px 290px;
   border-radius: 12px;
+}
+.porque_aws {
+  text-align: center;
+}
+#ec2 img {
+  width: 130%;
+  margin-bottom: 20px;
+}
+#ec2 h4 {
+  margin-bottom: 80px;
+}
+#ec2.box {
+  margin-bottom: 130px;
+  height: 78%;
+}
+#s3.box {
+  margin-bottom: 130px;
+  height: 78%;
+}
+#iam.box {
+  margin-bottom: 130px;
+  height: 78%;
+}
+#s3 h4 {
+  margin-bottom: 80px;
+}
+#s3 img {
+  border-radius: 20px;
+  width: 60%;
+  margin: 100px 0px 120px 0px;
+}
+#iam img {
+  margin: 110px 0px 104px 0px;
+  height: 25%;
+}
+#iam h4 {
+  margin-top: 33px;
 }
 /* ALERTA */
 
