@@ -595,12 +595,65 @@ input:hover {
 .tipos-servicos{
   display: flex;
   flex-direction: column;
-  background-color: white;
+}
+.tipos-servicos h1 {
+  color: #32b9cd;
+  text-align: center;
+  margin-bottom: 120px;
 }
 .servicos {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   text-align: left;
+}
+.texto-servico {
+  color: white;
+  padding: 0px 10px;
+  width: 40%;
+}
+.texto-servico h2 {
+  color: #32b9cd;
+  font-size: 36px;
+}
+.texto-servico p {
+  font-size: 30px;
+}
+#on-premisses {
+  margin: 20px 28px 20px 80px;
+  padding: 10px;
+}
+#servidor img{
+  width: 90%;
+  margin: 30px 10px 80px 80px;
+}
+#iaas {
+  margin: 20px 220px 20px 140px;
+  padding: 10px;
+  width: 50%;
+}
+#datacenter_amazon img {
+  width: 92%;
+  margin: 10px 0px 100px ;
+}
+#paas {
+  margin: 30px 130px 20px 0px;
+  padding: 10px;
+  width: 60%;
+}
+#hostinger img {
+  width: 65%;
+  margin: 120px 0px 80px 200px;
+}
+#saas {
+  margin: 10px 0px 50px 300px;
+  padding: 10px;
+  width: 60%;
+}
+
+#gmail_outlook img{
+  width: 60%;
+  margin: 70px 0px 100px 290px;
+  border-radius: 12px;
 }
 /* ALERTA */
 

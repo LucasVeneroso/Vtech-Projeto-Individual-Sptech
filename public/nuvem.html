@@ -87,99 +87,69 @@
     <div class="tipos-servicos">
       <h1>Tipos de serviço em nuvem</h1>
       <div class="servicos">
-        <div class="imagem-servico">
+        <div class="imagem-servico" id="servidor">
           <img src="./assets/imgs/servidor.png" alt="" />
         </div>
-        <div class="texto-servico">
+        <div class="texto-servico" id="on-premisses">
           <h2>On premisses</h2>
           <p>
-            Antes da nuvem dominar o mercado, o padrão era o On-Premises — o
-            modelo onde tudo acontece "dentro de casa". Imagine uma empresa que
-            decide construir seu próprio centro de dados: ela é a única
-            responsável por comprar os servidores físicos, configurar os racks,
-            instalar sistemas de refrigeração potentes e garantir a segurança
-            física do local. Nesse cenário, a equipe de TI carrega o mundo nas
-            costas. Se um hardware quebra no meio da noite, é o seu time que
-            precisa correr para trocar a peça. Se a demanda aumenta e o site
-            começa a travar, você precisa comprar novos equipamentos, esperar a
-            entrega e configurar tudo manualmente. É um modelo de alto custo
-            inicial (CAPEX) e manutenção constante, onde o foco acaba sendo mais
-            em "manter as luzes acesas" do que em inovar no negócio. É a base de
-            comparação necessária para entendermos como a AWS transforma essa
-            dor de cabeça em apenas alguns cliques.
+            Antes da nuvem dominar o mercado, o padrão era o On-Premises.
+            Imagine uma empresa que decide construir seu próprio centro de
+            dados: ela é a única responsável por comprar os servidores físicos,
+            configurar os racks, instalar sistemas de refrigeração potentes e
+            garantir a segurança física do local. Esse é o cenário que está
+            sendo mudado hoje em dia com a nuvem, pois necessita de um alto
+            investimento inicial, mas com a nuvem, em poucos minutos você tem
+            escala global.
           </p>
         </div>
       </div>
       <div class="servicos">
-        <div class="imagem-servico">
-          <img src="./assets/imgs/datacenter_amazon.jpg" alt="" />
-        </div>
-        <div class="texto-servico">
+        <div class="texto-servico" id="iaas">
           <h2>Iaas</h2>
           <p>
-            Antes da nuvem dominar o mercado, o padrão era o On-Premises — o
-            modelo onde tudo acontece "dentro de casa". Imagine uma empresa que
-            decide construir seu próprio centro de dados: ela é a única
-            responsável por comprar os servidores físicos, configurar os racks,
-            instalar sistemas de refrigeração potentes e garantir a segurança
-            física do local. Nesse cenário, a equipe de TI carrega o mundo nas
-            costas. Se um hardware quebra no meio da noite, é o seu time que
-            precisa correr para trocar a peça. Se a demanda aumenta e o site
-            começa a travar, você precisa comprar novos equipamentos, esperar a
-            entrega e configurar tudo manualmente. É um modelo de alto custo
-            inicial (CAPEX) e manutenção constante, onde o foco acaba sendo mais
-            em "manter as luzes acesas" do que em inovar no negócio. É a base de
-            comparação necessária para entendermos como a AWS transforma essa
-            dor de cabeça em apenas alguns cliques.
+            É uma evolução do on-premisses, nesse a empresa te tem disponível
+            toda a infraestrutura pronta de alguma empresa, você só usa ela pela
+            internet, a empresa cuida da infraestrutua do servidor, porém o
+            usuário é responsável por manter todo o sistema do servidor
+            funcioando, a grande parte das empresas de cloud como (Aws da Amazon
+            e Azure da microsoft) disponibilizam esse tipo de serviço no seu
+            sistema
           </p>
         </div>
-      </div>
-      <div class="servicos">
-        <div class="imagem-servico">
-          <img src="./assets/imgs/hostinger.png" alt="" />
+        <div class="imagem-servico" id="datacenter_amazon">
+          <img src="./assets/imgs/datacenter_amazon.jpg" alt="" />
         </div>
-        <div class="texto-servico">
+      </div>
+      <div class="servicos"  >
+        <div class="imagem-servico" id="hostinger">
+          <img src="./assets/imgs/iaas.png" alt="" />
+        </div>
+        <div class="texto-servico" id="paas">
           <h2>Paas</h2>
           <p>
-            Antes da nuvem dominar o mercado, o padrão era o On-Premises — o
-            modelo onde tudo acontece "dentro de casa". Imagine uma empresa que
-            decide construir seu próprio centro de dados: ela é a única
-            responsável por comprar os servidores físicos, configurar os racks,
-            instalar sistemas de refrigeração potentes e garantir a segurança
-            física do local. Nesse cenário, a equipe de TI carrega o mundo nas
-            costas. Se um hardware quebra no meio da noite, é o seu time que
-            precisa correr para trocar a peça. Se a demanda aumenta e o site
-            começa a travar, você precisa comprar novos equipamentos, esperar a
-            entrega e configurar tudo manualmente. É um modelo de alto custo
-            inicial (CAPEX) e manutenção constante, onde o foco acaba sendo mais
-            em "manter as luzes acesas" do que em inovar no negócio. É a base de
-            comparação necessária para entendermos como a AWS transforma essa
-            dor de cabeça em apenas alguns cliques.
+            É uma evolução do Iaas, assim como você precisava se preocupar com o
+            sistema operacional e o sistema, tudo isso é gerenciado pelo
+            provedor da nuvem, você se preocupa, muito útil principalmente para
+            desenvolvedores e programadores que apenas se preocupam com o
+            código, um exemplo desse serviços de hospedagem de site, eles te dão
+            tudo pronto, você só tem acesso a fazer o código e colocar ele no ar
           </p>
         </div>
       </div>
       <div class="servicos">
-        <div class="imagem-servico">
-          <img src="./assets/imgs/gmail_outlook.jpeg" alt="" />
-        </div>
-        <div class="texto-servico">
+        <div class="texto-servico" id="saas">
           <h2>Saas</h2>
           <p>
-            Antes da nuvem dominar o mercado, o padrão era o On-Premises — o
-            modelo onde tudo acontece "dentro de casa". Imagine uma empresa que
-            decide construir seu próprio centro de dados: ela é a única
-            responsável por comprar os servidores físicos, configurar os racks,
-            instalar sistemas de refrigeração potentes e garantir a segurança
-            física do local. Nesse cenário, a equipe de TI carrega o mundo nas
-            costas. Se um hardware quebra no meio da noite, é o seu time que
-            precisa correr para trocar a peça. Se a demanda aumenta e o site
-            começa a travar, você precisa comprar novos equipamentos, esperar a
-            entrega e configurar tudo manualmente. É um modelo de alto custo
-            inicial (CAPEX) e manutenção constante, onde o foco acaba sendo mais
-            em "manter as luzes acesas" do que em inovar no negócio. É a base de
-            comparação necessária para entendermos como a AWS transforma essa
-            dor de cabeça em apenas alguns cliques.
+            Aqui não existe preocupação nenhuma, os provedores gerenciam tudo,
+            literalmente tudo, então fica tudo mais fácil, a preocupação da
+            empresa que contrata esse serviço se preocupa apenas em manter
+            pequenas alterações no sistema, o resto é provisionado, um grande
+            exemplo disso é o gmail da google e o outlook da microsoft.
           </p>
+        </div>
+        <div class="imagem-servico" id="gmail_outlook">
+          <img src="./assets/imgs/gmail_outlook.jpg" alt="" />
         </div>
       </div>
     </div>
