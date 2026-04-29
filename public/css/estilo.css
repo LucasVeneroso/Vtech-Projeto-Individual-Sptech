@@ -674,32 +674,28 @@ input:hover {
   width: 130%;
   margin-bottom: 20px;
 }
-#ec2 h4 {
-  margin-bottom: 80px;
-}
-#ec2.box {
-  height: 78%;
-}
-#s3.box {
-  height: 78%;
-}
-#iam.box {
-  height: 78%;
-}
-#s3 h4 {
-  margin-bottom: 80px;
-}
 #s3 img {
   border-radius: 20px;
   width: 60%;
   margin: 100px 0px 120px 0px;
 }
 #iam img {
-  margin: 110px 0px 104px 0px;
+  margin: 80px 0px 104px 0px;
   height: 25%;
 }
 #iam h4 {
-  margin-top: 33px;
+  margin-top: 73px;
+  margin-bottom: 12px;
+}
+#ec2 {
+  height: 1000px;
+}
+#s3 {
+  height: 1000px;
+}
+#iam {
+  height: 1000px;
+
 }
 
 .box-ajuda {
