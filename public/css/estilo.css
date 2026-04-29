@@ -655,7 +655,20 @@ input:hover {
   border-radius: 12px;
 }
 .porque_aws {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
+}
+.porque_aws h1 {
+  font-size: 40px;
+  width: 70%;
+  margin: 70px auto 0px auto;
+}
+.porque_aws p {
+  font-size: 26px;
+  width: 60%;
+  margin: 70px auto;
 }
 #ec2 img {
   width: 130%;
@@ -665,15 +678,12 @@ input:hover {
   margin-bottom: 80px;
 }
 #ec2.box {
-  margin-bottom: 130px;
   height: 78%;
 }
 #s3.box {
-  margin-bottom: 130px;
   height: 78%;
 }
 #iam.box {
-  margin-bottom: 130px;
   height: 78%;
 }
 #s3 h4 {
@@ -690,6 +700,34 @@ input:hover {
 }
 #iam h4 {
   margin-top: 33px;
+}
+
+.box-ajuda {
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+  text-align: center;
+}
+.box-ajuda h3 {
+  color: #103c88;
+  font-size: 40px;
+}
+.referencias {
+  display: flex;
+  flex-direction: row;
+}
+
+.box-referencias {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  background-color: white;
+  padding: 20px;
+}
+.box-referencias a{
+  color: black;
+  text-decoration: none;
+  margin: 5px 0px;
 }
 /* ALERTA */
 
