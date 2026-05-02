@@ -85,7 +85,7 @@
               />
             </div>
             <div class="botao">
-              <button>Cadastrar</button>
+              <button onclick="cadastrar()">Cadastrar</button>
             </div>
           </div>
           <div id="div_aguardar" class="loading-div">
@@ -153,20 +153,15 @@
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
-    var cpfVar = cpf_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular;
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
-      cpfVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -193,11 +188,6 @@
     } else if (confirmacaoSenhaVar != senhaVar) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Senhas diferentes)";
-      finalizarAguardar();
-      return false;
-    } else if (cpfVar.length != 14) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(CPF inválido, insira conforme o exemplo)";
       finalizarAguardar();
       return false;
     } else {
@@ -228,9 +218,7 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        cpfServer: cpfVar,
         senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular,
       }),
     })
       .then(function (resposta) {
