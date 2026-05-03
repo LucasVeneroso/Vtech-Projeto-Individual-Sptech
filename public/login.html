@@ -16,13 +16,13 @@
 
   <body>
     <!--Header-->
-   <header class="header">
+    <header class="header">
       <div class="container">
         <a href="index.html">
           <img src="./assets/imgs/logo_vtech.png" alt="" />
         </a>
         <ul class="navbar">
-          <li >
+          <li>
             <a href="index.html">Inicial</a>
           </li>
           <li>
@@ -119,8 +119,8 @@
 </html>
 
 <script>
+  aguardar();
   function entrar() {
-    aguardar();
 
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
@@ -159,12 +159,9 @@
             console.log(JSON.stringify(json));
             sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.NOME_USUARIO = json.nome;
-            sessionStorage.ID_USUARIO = json.id;
-            sessionStorage.CPF_USUARIO = json.cpf;
-            sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
 
             setTimeout(function () {
-              window.location = "./dashboard/cards.html";
+              window.location = "/dashboard/cards.html";
             }, 1000); // apenas para exibir o loading
           });
         } else {
