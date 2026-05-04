@@ -22,7 +22,7 @@
           <img src="./assets/imgs/logo_vtech.png" alt="" />
         </a>
         <ul class="navbar">
-          <li >
+          <li>
             <a href="index.html">Inicial</a>
           </li>
           <li>
@@ -74,7 +74,13 @@
             </div>
             <div class="campo">
               <span>Senha:</span>
-              <input id="senha_input" type="password" placeholder="******" />
+              <input
+                id="senha_input"
+                type="password"
+                placeholder="******"
+                oninput="qualidadeSenha()"
+              />
+              <div id="div_erros_login"></div>
             </div>
             <div class="campo">
               <span>Confirmação da Senha:</span>
@@ -91,8 +97,6 @@
           <div id="div_aguardar" class="loading-div">
             <img src="./assets/circle-loading.gif" id="loading-gif" />
           </div>
-
-          <div id="div_erros_login"></div>
         </div>
         <div class="redirecionar_cadastro">
           <p>Ja tem cadastro?</p>
@@ -143,9 +147,45 @@
 </html>
 
 <script>
-  // Array para armazenar empresas cadastradas para validação de código de ativação
-  let listaEmpresasCadastradas = [];
+  function qualidadeSenha() {
+    let senhaVar = senha_input.value;
+    let caracteres_especiais = ["@", "$", "%", "#", "!", "*", "&", "?"];
+    let tem_especial = false;
+    for (let i = 0; i < caracteres_especiais.length; i++) {
+      if (senhaVar.includes(caracteres_especiais[i])) {
+        tem_especial = caracteres_especiais[i]
+        break;
+      }
+    }
+    let listar_validacoes = [
+      senhaVar.length >= 8,
+      senhaVar != senhaVar.toLowerCase(),
+      senhaVar != senhaVar.toUpperCase(),
+      senhaVar.includes(tem_especial),
+    ];
+    let criterios = 0;
+    for (let i = 0; i < listar_validacoes.length; i++) {
+      if (listar_validacoes[i] == true) {
+        criterios++;
+      }
+    }
 
+    if (criterios == 4) {
+      div_erros_login.innerHTML = `Senha Forte!`;
+    } else if (criterios == 3) {
+      div_erros_login.innerHTML = `Senha Média. Utilize maiúsculas, minúsculas <br> e pelo menos 8 caracteres.`;
+      return false;
+    } else if (criterios == 2) {
+      div_erros_login.innerHTML = `Senha Insegura. A senha precisa ter pelo menos, 1 letra maiúscula, um caractere especial e um número`;
+      return false;
+    } else if (criterios == 1) {
+      div_erros_login.innerHTML = `Senha Insegura. A senha precisa ter pelo menos, 1 letra maiúscula, 1 minúscula, uma caractere especial e um número`;
+      return false;
+    } else {
+      div_erros_login.innerHTML = `Senha Insegura. A senha precisa ter pelo menos 8 caracteres, 1 letra maiúscula, 1 minúscula, uma caractere especial e um número`;
+      return false;
+    }
+  }
   function cadastrar() {
     // aguardar();
 
@@ -164,47 +204,41 @@
       confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      mensagem_erro.innerHTML = "Nenhum campo pode ficar em branco";
 
       finalizarAguardar();
       return false;
-    } else if (nomeVar.length < 1) {
+    } else if (nomeVar.length <= 1) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Insira um nome Válido)";
+      mensagem_erro.innerHTML = "Insira um nome Válido";
       finalizarAguardar();
       return false;
-    } else if (!(emailVar.includes("@") || emailVar.includes("."))) {
+    } else if (
+      !(
+        emailVar.includes("@sptech.school") ||
+        emailVar.includes(".") ||
+        emailVar.includes("@gmail.com") ||
+        emailVar.includes("@outlook.com")
+      )
+    ) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Insira um email válido com '@' e '.')";
+      mensagem_erro.innerHTML =
+        "Insira um email válido (gmail, outlook ou sptech)";
       finalizarAguardar();
       return false;
     } else if (senhaVar.length < 6) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Senha inválida, deve ter mais que 6 caracteres)";
+        "Senha inválida, deve ter mais que 6 caracteres";
       finalizarAguardar();
       return false;
     } else if (confirmacaoSenhaVar != senhaVar) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Senhas diferentes)";
+      mensagem_erro.innerHTML = "Senhas diferentes";
       finalizarAguardar();
       return false;
     } else {
       setInterval(sumirMensagem, 5000);
-    }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id;
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
     }
 
     // Enviando o valor da nova input
