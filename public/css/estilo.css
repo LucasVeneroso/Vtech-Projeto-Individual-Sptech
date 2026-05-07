@@ -182,7 +182,19 @@ html {
 }
 .box:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(50, 185, 205, 1);
+  box-shadow: -5 10px 30px rgba(50, 185, 205, 1);
+}
+#ec2.box:hover {
+  transform: translateY(-10px);
+  box-shadow: -5px -10px 30px rgba(50, 185, 205, 1);
+}
+#s3.box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px -10px 30px rgba(50, 185, 205, 1);
+}
+#iam.box:hover {
+  transform: translateY(-10px);
+  box-shadow: 5px -10px 30px rgba(50, 185, 205, 1);
 }
 /* SOBRE MIM */
 
@@ -657,11 +669,42 @@ input:hover {
   margin: 110px 0px 100px 290px;
   border-radius: 12px;
 }
+.porque_nuvem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e5e5e5;
+}
+.porque_nuvem h1 {
+  font-size: 40px;
+  width: 70%;
+  margin: 70px auto 0px auto;
+}
+.porque_nuvem h3 {
+  color: #103c88;
+  font-size: 30px;
+  width: 70%;
+  margin: 70px auto 0px auto;
+}
+.porque_nuvem ul {
+  font-size: 20px;
+  width: 70%;
+  margin: 40px auto 40px auto;
+}
+.porque_nuvem span {
+  text-shadow: 0px 0px 20px rgb(102, 240, 240);
+  font-size: 24px;
+  width: 70%;
+  margin: 40px auto 0px auto;
+  font-weight: bolder;
+  color: #2d5fb6;
+}
 .porque_aws {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
+  color: #32b9cd;
 }
 .porque_aws h1 {
   font-size: 40px;
@@ -673,6 +716,10 @@ input:hover {
   width: 60%;
   margin: 70px auto;
 }
+#secao-nuvem.social {
+  background-color: #020b1a;
+}
+
 #ec2 img {
   width: 130%;
   margin-bottom: 20px;
