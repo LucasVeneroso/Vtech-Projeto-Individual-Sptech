@@ -31,7 +31,7 @@
             <h3>Quiz</h3>
           </a>
         </div>
-        <div class="btn-nav-white">
+        <div class="btn-nav-white" id="dashboard">
           <a href="./dashboard.html">
             <h3>Gráficos</h3>
           </a>
@@ -114,38 +114,142 @@
 </html>
     <script>
         const listaDeQuestoes = [
-    
-            {
-                pergunta: "Em um contexto onde uma empresa existe a muitos anos e tem ums sistema <b>local</b> de servidores, ele se encaixa melhor em qual tipo de serviço de nuvem",
-                alternativaA: "Iaas",
-                alternativaB: "Paas",
-                alternativaC: "Saas",
-                alternativaD: "On-presmise",
-                alternativaE: "Nenhuma das anteriores",
-                alternativaCorreta: "alternativaD"
-            },
-    
-            {
-                pergunta: "Qual necessidade surgiu na decada de 60 que fez com que fez com que o primeiro conceito de nuvem fosse criado?",
-                alternativaA: "Por causa da falta de computadores da época, tendo em vista que muita gente usando o mesmo computador diminuia a potência do computador ",
-                alternativaB: "Por causa da necessidade de armazenamento, tendo em vista que eles guardavam muitos dados em pastas com papéis",
-                alternativaC: "Para deixar o serviço de servidores mais baratos e com maior disponibilidade para todos no mundo, fazendo com que qualquer pessoam fazer sua própria empresa em escala global em poucos segundos",
-                alternativaD: "Em 1960 nem tinha computador",
-                alternativaE: "Nenhuma das anteriores",
-                alternativaCorreta: "alternativaA"
-            },
-    
-            {
-                pergunta: "Qual serviço da AWS é responsável por criar instâncias e ?",
-                alternativaA: "Dez",
-                alternativaB: "Doze",
-                alternativaC: "Oito",
-                alternativaD: "Onze",
-                alternativaE: "Onze",
-                alternativaCorreta: "alternativaD"
-            }
-    
-        ]
+    {
+        pergunta: "De acordo com a seção de história do site, em que ano nasceu a ideia do que seria a nuvem, motivada pela necessidade de compartilhar um computador para várias tarefas?",
+        alternativaA: "1990",
+        alternativaB: "2002",
+        alternativaC: "1960",
+        alternativaD: "2006",
+        alternativaE: "1985",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        pergunta: "No modelo On-premises descrito no seu conteúdo, qual é a principal característica em relação ao investimento inicial?",
+        alternativaA: "É um modelo gratuito para novas empresas.",
+        alternativaB: "Necessita de um alto investimento inicial (CAPEX).",
+        alternativaC: "O custo é dividido com outras empresas vizinhas.",
+        alternativaD: "Não há custo de hardware, apenas de software.",
+        alternativaE: "O pagamento é feito apenas após 5 anos de uso.",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "Segundo o seu resumo sobre o EC2 da AWS, o que são as 'instâncias' que esse serviço cria?",
+        alternativaA: "São discos rígidos externos plugados via USB.",
+        alternativaB: "São cabos de rede que conectam a empresa à internet.",
+        alternativaC: "São computadores virtuais que podem ser simples ou potentes.",
+        alternativaD: "São funcionários da Amazon que configuram o servidor.",
+        alternativaE: "São apenas bancos de dados para guardar fotos.",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        pergunta: "Na seção 'Mas porque usar Nuvem?', qual das opções abaixo é citada como um dos três pontos essenciais?",
+        alternativaA: "Design Moderno",
+        alternativaB: "Facilidade de Programação",
+        alternativaC: "Escalabilidade",
+        alternativaD: "Brinde de Créditos Iniciais",
+        alternativaE: "Suporte via Telefone 24h",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        pergunta: "Com base na sua explicação de SaaS, qual é a preocupação de uma empresa que contrata esse tipo de serviço?",
+        alternativaA: "Gerenciar o sistema operacional e as atualizações.",
+        alternativaB: "Comprar os racks e instalar o ar-condicionado.",
+        alternativaC: "Manter apenas pequenas alterações no sistema, pois o resto é provisionado.",
+        alternativaD: "Programar todo o código do zero.",
+        alternativaE: "Configurar as placas de rede dos servidores.",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        pergunta: "Se uma empresa quer usar a infraestrutura pronta de outra empresa e acessá-la pela internet, sendo o usuário responsável por manter o sistema do servidor funcionando, qual modelo ela está usando?",
+        alternativaA: "On-premises",
+        alternativaB: "SaaS",
+        alternativaC: "PaaS",
+        alternativaD: "IaaS",
+        alternativaE: "FaaS",
+        alternativaCorreta: "alternativaD"
+    },
+    {
+        pergunta: "No seu texto sobre o S3, ele é comparado a um diretório de arquivos, mas 'mil vezes melhor'. Qual a principal função dele na arquitetura?",
+        alternativaA: "Processar dados em alta velocidade com o cérebro da nuvem.",
+        alternativaB: "Ser o segurança que barra quem não tem permissão.",
+        alternativaC: "Ser o responsável pela persistência dos dados, garantindo que nada seja perdido.",
+        alternativaD: "Criar máquinas virtuais para rodar o Windows.",
+        alternativaE: "Ligar e desligar o servidor conforme o pagamento.",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        pergunta: "No seu conteúdo, o IAM (Identity and Access Management) é comparado a qual profissional para facilitar o entendimento?",
+        alternativaA: "Um Chef de cozinha preparando pizzas.",
+        alternativaB: "Um Gerente de banco conferindo o saldo.",
+        alternativaC: "Um Segurança de balada ou porteiro de prédio comercial.",
+        alternativaD: "Um Programador escrevendo código em Python.",
+        alternativaE: "Um Engenheiro Elétrico cuidando dos geradores.",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        pergunta: "Sobre o FaaS, você usa o exemplo de um aplicativo de banco para explicar sua eficiência. Por que esse modelo economiza dinheiro?",
+        alternativaA: "Porque o banco não cobra taxas para quem usa FaaS.",
+        alternativaB: "Porque o serviço só funciona e cobra pelos milissegundos quando é acionado.",
+        alternativaC: "Porque ele roda 24 horas por dia sem parar.",
+        alternativaD: "Porque ele não precisa de internet para funcionar.",
+        alternativaE: "Porque ele é uma versão gratuita do SaaS.",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "De acordo com o texto de PaaS, qual é o foco principal dos desenvolvedores e programadores que utilizam esse modelo?",
+        alternativaA: "Comprar servidores físicos e configurar o gás.",
+        alternativaB: "Se preocupar apenas com o código e colocá-lo no ar.",
+        alternativaC: "Limpar o chão do data center.",
+        alternativaD: "Gerenciar o sistema operacional e as atualizações de segurança.",
+        alternativaE: "Instalar cabos de fibra ótica.",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "Na seção de Segurança do seu site, você menciona que a nuvem oferece uma proteção superior, mas deixa um aviso importante para quem contrata. Qual é ele?",
+        alternativaA: "A nuvem é a única responsável pela segurança total.",
+        alternativaB: "A pessoa que contrata precisa saber o que faz para os dados não serem vazados.",
+        alternativaC: "A segurança na nuvem é opcional e deve ser paga à parte.",
+        alternativaD: "O IAM não funciona se o EC2 estiver desligado.",
+        alternativaE: "Somente empresas americanas podem ter segurança na nuvem.",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "Segundo a história da nuvem no seu site, o que a Amazon lançou em 2006 que resolveu o antigo problema de compartilhamento de hardware de forma isolada?",
+        alternativaA: "O primeiro iPhone.",
+        alternativaB: "O serviço S3 de armazenamento.",
+        alternativaC: "O serviço EC2 (Elastic Compute Cloud).",
+        alternativaD: "O sistema operacional Windows.",
+        alternativaE: "A rede social Facebook.",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        pergunta: "No seu texto sobre Escalabilidade, você menciona que esse recurso permitiu que um tipo específico de empresa surgisse 'do dia para a noite'. Que empresas são essas?",
+        alternativaA: "Grandes bancos tradicionais.",
+        alternativaB: "Diversas startups.",
+        alternativaC: "Empresas de entrega de pizza física.",
+        alternativaD: "Lojas de ferragens.",
+        alternativaE: "Fábricas de servidores.",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "Uma empresa percebe que está gastando fortunas com servidores ligados 24/7 para um processo que só acontece quando um cliente faz um upload. Qual a mudança lógica baseada no seu conteúdo?",
+        alternativaA: "Mudar do FaaS para o PaaS para garantir que o servidor nunca desligue.",
+        alternativaB: "Mudar do PaaS para o FaaS, para que o código 'acorde' apenas no upload.",
+        alternativaC: "Voltar para o On-premises para ter controle total dos cabos.",
+        alternativaD: "Comprar mais instâncias EC2 para processar mais rápido.",
+        alternativaE: "Usar o Outlook da Microsoft para resolver o problema de processamento.",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "Um usuário consegue invadir um sistema e deletar arquivos importantes. Analisando o seu texto sobre o IAM e Segurança, onde provavelmente ocorreu a falha?",
+        alternativaA: "No S3, que não é escalável o suficiente para barrar invasores.",
+        alternativaB: "No EC2, porque as máquinas virtuais eram 'muito fracas'.",
+        alternativaC: "No IAM, pois ele é o 'guarda' que deveria definir quem pode ou não mexer nos serviços.",
+        alternativaD: "No On-premises, pois a empresa esqueceu de comprar o hardware.",
+        alternativaE: "Na Amazon, que é a única responsável por não deixar os dados vazarem.",
+        alternativaCorreta: "alternativaC"
+    }
+];
     
         // variáveis globais    
         let numeroDaQuestaoAtual = 0
@@ -160,6 +264,7 @@
             document.getElementById('pontuacao').style.display = "none"
             document.getElementById('pontuacaoEJogo').style.display = "none"
             document.getElementById('jogo').style.display = "none"
+            document.getElementById('dashboard').style.display = "none"
         }
     
         function iniciarQuiz() {
@@ -235,7 +340,9 @@
     
             if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
                 preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-            } else {
+            } else if(numeroDaQuestaoAtual == 2){
+            document.getElementById('dashboard').style.display = "flex"
+            }else {
                 finalizarJogo()
             }
             limparCoresBackgroundOpcoes()
