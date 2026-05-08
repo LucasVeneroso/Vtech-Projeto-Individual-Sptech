@@ -113,6 +113,8 @@
 </body>
 </html>
     <script>
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
         const listaDeQuestoes = [
     {
         pergunta: "De acordo com a seção de história do site, em que ano nasceu a ideia do que seria a nuvem, motivada pela necessidade de compartilhar um computador para várias tarefas?",
@@ -252,12 +254,19 @@
 ];
     
         // variáveis globais    
+        let numTentaivas = 0
         let numeroDaQuestaoAtual = 0
         let pontuacaoFinal = 0
         let tentativaIncorreta = 0
         let certas = 0
         let erradas = 0
         let quantidadeDeQuestoes = listaDeQuestoes.length
+        let iam = 0
+        let ec2 = 0
+        let s3 = 0
+        let nuvemGeral = 0
+        let historiaNuvem = 0
+        let vantagensNuvem = 0
         // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
     
         function onloadEsconder() {
@@ -305,6 +314,11 @@
             for (let i = 0; i < options.length; i++) {
                 if (options[i].checked) {
                     hasChecked = true
+                    if(numeroDaQuestaoAtual == 14){
+            document.getElementById('btnConcluir').style.display = "flex"
+            document.getElementById('btnProx').style.display = "none"
+            btnConcluir.disabled = false
+            }
                     break
                 }
             }
@@ -340,9 +354,7 @@
     
             if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
                 preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-            } else if(numeroDaQuestaoAtual == 2){
-            document.getElementById('dashboard').style.display = "flex"
-            }else {
+            } else {
                 finalizarJogo()
             }
             limparCoresBackgroundOpcoes()
@@ -374,6 +386,27 @@
                     document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
                     pontuacaoFinal++
                     certas++
+                    if (numeroDaQuestaoAtual == 0 || numeroDaQuestaoAtual == 11){
+                        historiaNuvem++;
+                    } else if(
+                        numeroDaQuestaoAtual == 1 ||
+                        numeroDaQuestaoAtual == 4 ||
+                        numeroDaQuestaoAtual == 5 ||
+                        numeroDaQuestaoAtual == 8 ||
+                        numeroDaQuestaoAtual == 9 ||
+                        numeroDaQuestaoAtual == 13
+                    )
+                    {
+                        nuvemGeral++
+                    } else if(numeroDaQuestaoAtual == 3 || numeroDaQuestaoAtual == 10 || numeroDaQuestaoAtual == 12){
+                        vantagensNuvem++
+                    } else if(numeroDaQuestaoAtual == 2){
+                        ec2++
+                    } else if(numeroDaQuestaoAtual == 6){
+                        s3++
+                    } else if(numeroDaQuestaoAtual == 7 || numeroDaQuestaoAtual == 14){
+                        iam++
+                    }
                     document.getElementById("spanCertas").innerHTML = certas
                     numeroDaQuestaoAtual++
                 } else if (option.checked && option.value !== respostaQuestaoAtual) {
@@ -405,36 +438,12 @@
         }
     
         function finalizarJogo() {
-            let textoParaMensagemFinal = null
-            let classComCoresParaMensagemFinal = null
-            const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
-    
-            if (porcentagemFinalDeAcertos <= 0.3) {
-                textoParaMensagemFinal = "Parece que você não estudou..."
-                classComCoresParaMensagemFinal = "text-danger-with-bg"
-            }
-            else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-                textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
-                classComCoresParaMensagemFinal = "text-warning-with-bg"
-            }
-            else if (porcentagemFinalDeAcertos >= 0.9) {
-                textoParaMensagemFinal = "Uau, parabéns!"
-                classComCoresParaMensagemFinal = "text-success-with-bg"
-            }
-    
-            textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
-    
-    
-            document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-            document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
-            document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
-    
-            document.getElementById('jogo').classList.add("text-new-gray") 
-    
+            window.location = 'dashboard.html'
             btnProx.disabled = true
             btnSubmeter.disabled = true
             btnConcluir.disabled = false
             btnTentarNovamente.disabled = false
+            numTentaivas++;
     
         }
     </script>
