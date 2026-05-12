@@ -1,15 +1,15 @@
-var express = require(express);
+var express = require("express");
 var router = express.Router();
 var quizController = require("../controllers/quizController");
 
 //cadastra uma tentativa de quiz
-router.post("/cadastrar", function (req, res) {
-    quizController.cadastrar(req, res);
-})
+router.post("/inserirDados", function (req, res) {
+  quizController.inserirDados(req, res);
+});
 
 //Puxar do banco de dados
-router.get("/listar", function (req, res) {
-    quizController.listar(req, res);
+router.get("/listarDados", function (req, res) {
+  quizController.listarDados(req, res);
 });
 
 module.exports = router;

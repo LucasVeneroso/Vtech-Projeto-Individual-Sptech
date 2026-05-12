@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="pt-br">
   <head>
     <link rel="icon" href="../assets/imgs/favicom.png" />
@@ -114,6 +114,7 @@
 </html>
     <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  fkUsuario = sessionStorage.ID_USUARIO;
 
         const listaDeQuestoes = [
     {
@@ -126,7 +127,7 @@
         alternativaCorreta: "alternativaC"
     },
     {
-        pergunta: "No modelo On-premises descrito no seu conteúdo, qual é a principal característica em relação ao investimento inicial?",
+        pergunta: "No modelo On-premises descrito no conteúdo, qual é a principal característica em relação ao investimento inicial?",
         alternativaA: "É um modelo gratuito para novas empresas.",
         alternativaB: "Necessita de um alto investimento inicial (CAPEX).",
         alternativaC: "O custo é dividido com outras empresas vizinhas.",
@@ -406,6 +407,8 @@
                         s3++
                     } else if(numeroDaQuestaoAtual == 7 || numeroDaQuestaoAtual == 14){
                         iam++
+                    } else if(numeroDaQuestaoAtual == 14){
+                        numTentaivas++;
                     }
                     document.getElementById("spanCertas").innerHTML = certas
                     numeroDaQuestaoAtual++
@@ -436,19 +439,18 @@
                 options[i].checked = false;
             }
         }
-    
         function finalizarJogo() {
-            window.location = 'dashboard.html'
             btnProx.disabled = true
             btnSubmeter.disabled = true
             btnConcluir.disabled = false
             btnTentarNovamente.disabled = false
             numTentaivas++;
-    
-        }
-        function cadastrar() {
+            window.location = "dashboard.html";
+            document.getElementById('dashboard').style.display = "flex"
+
+
     // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
+    fetch("/quiz/inserirDados", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -456,33 +458,31 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
+        nuvemServer: nuvemGeral,
+        historia_nuvemServer: historiaNuvem ,
+        vantagens_nuvemServer:  vantagensNuvem,
+        iamServer: iam,
+        ec2Server: ec2,
+        s3Server:s3, 
+        num_acertosServer: certas,  
+        id_usuarioServer: fkUsuario,
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
           setTimeout(() => {
-            window.location = "login.html";
+            window.location = 'dashboard.html';
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
         } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+          throw "Não foi possível inserir dados no banco";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
       });
 
     return false;
