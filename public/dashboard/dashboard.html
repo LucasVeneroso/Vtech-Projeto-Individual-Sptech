@@ -31,7 +31,7 @@
   <body onload=" atualizarFeed()">
 
   <body>
-    <div class="janela">
+    <div class="">
       <div class="header-left">
         <h1>Vtech</h1>
 
@@ -62,26 +62,29 @@
 
     </div>
       <div class="dash">
-        <div id="alerta"></div>
-
-        <div class="btns-dash" id="btnAquario">
-          <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+        <div class="kpis">
+          <div class="kpi"><span>Numero Acertos</span></div>
+          <div class="kpi"><span>Porcentagem de Acertos (grafico)</span></div>
+          <div class="kpi"><span>Onde Melhorar</span></div>
         </div>
-        <div id="graficos"></div>
+        <div id="grafico">
+          <canvas id="myChart"></canvas>
+        </div>
       </div>
   </body>
 </html>
 
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  fkUsuario = sessionStorage.ID_USUARIO;
 
   let proximaAtualizacao;
 
   window.onload = exibirAquariosDoUsuario();
 
   function exibirAquariosDoUsuario() {
-    var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-    aquarios.forEach((item) => {
+    var quiz = JSON.parse(sessionStorage.QUIZ);
+    quiz.forEach((item) => {
       document.getElementById("btnAquario").innerHTML += `
             <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
             `;
@@ -166,14 +169,14 @@
 
   //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
   //     Para ajustar o "select", ajuste o comando sql em src/models
-  function obterDadosGrafico(idAquario) {
-    alterarTitulo(idAquario);
+  function obterDadosGrafico(quiz) {
+    alterarTitulo(quiz);
 
     if (proximaAtualizacao != undefined) {
       clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/medidas/ultimas/${idAquario}`, { cache: "no-store" })
+    fetch(`/quiz/listarDados/:${fkUsuario}`, { cache: "no-store" })
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
@@ -334,5 +337,34 @@
           `Erro na obtenção dos dados p/ gráfico: ${error.message}`,
         );
       });
+
+      const ctx = document.getElementById('myChart');
+      new Chart(ctx, {
+      type:'bar',
+      data: {
+          labels: ['Janeiro', 'fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+          datasets: [{
+              label: 'Temperatura Média',
+              data: [22,24,27,23,20,18],
+              borderWidth: 1,
+              backgroundColor: 'rgba(255, 99, 132, 0.7)'
+
+            },
+            {
+              label: 'Umidade média',
+              data: [90,89,93,87,88,82],
+              borderWidth: 1,
+              backgroundColor: 'rgba(54, 162, 235, 0.7)'
+          }]
+        },
+          options:{
+              sacles:{
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      }
+  );
   }
 </script>

@@ -14,57 +14,40 @@ body {
   justify-content: center;
 }
 
-.dash-right .avisos {
-  width: 100%;
-  color: rgb(216, 216, 216);
-  font-family:
-    "Barlow", "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.dash-right .avisos .container {
+.dash {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-left: 350px;
+  border-radius: 10px;
+  border: 2px solid aqua;
+  color: black;
+  width: 74vw;
+  height: 43vw;
+  padding: 30px;
+  margin:40px 0px 0px 410px ;
 }
-
-.dash-right .avisos .container .div-form {
-  width: 95%;
+.kpis{
+  display: flex;
+  justify-content: space-around;
 }
-
-.dash-right .avisos .container .div-form #form_postagem {
-  width: 95%;
+.kpi {
+  padding: 40px;
+  border-radius: 10px;
+  border: 2px solid aquamarine;
+  background-color: aliceblue;
+  width: 24%;
+  margin: 20px;
 }
-
-.dash-right .avisos .div-form label {
-  width: 95%;
+.kpi span {
+  font-size: 30px;
 }
-
-.dash-right .avisos .div-form input {
-  width: 95%;
-  border-radius: 5px;
+.grafico {
+    display: flex;
+    flex-direction: row;
 }
-
-.dash-right .avisos .div-form textarea {
-  width: 95%;
-  border: 3px solid #e6005a;
-  background-color: white;
-  border-radius: 5px;
+.grafico canvas{
+    width: 400px;
 }
-
-.dash-right .avisos .div-form button {
-  cursor: pointer;
-  font-family:
-    "Barlow", "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #e6005a;
-  width: 120px;
-}
-
 .publicacao-btn-editar {
   cursor: pointer;
   font-family:
