@@ -19,7 +19,7 @@ function inserirDados(
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function listarDados() {
   var instrucaoSql = `
-        SELECT q.num_acertos, q.historia_nuvem, q.vantagens_nuvem, q.iam, q.ec2, q.s3, u.nome FROM quiz q JOIN Usuario u ON q.id_usuario = u.id;
+        SELECT num_acertos, historia_nuvem, vantagens_nuvem, iam, ec2, s3 FROM quiz;
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
