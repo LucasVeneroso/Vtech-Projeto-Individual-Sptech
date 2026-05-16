@@ -477,66 +477,60 @@
                 options[i].checked = false;
             }
         }
+        function contarTentativas() {
+            fetch(`/quiz/contarTentativas/${idUsuario}`, {
+                method: "GET"
+            })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (resultado) {
+                        console.log("Resultado das tentativas:", resultado);
+                        if (resultado[0].tentativas > 0) {
+                            document.getElementById('dashboard').style.display = ""
+                        }
+                    });
+                } else {
+                    console.error("Erro na resposta da API");
+                    document.getElementById('dashboard').style.display = "none"
+                }
+            })
+            .catch(function (erro) {
+                console.error("Erro no fetch ao contar tentativas:", erro);
+            });
+        }
         function finalizarJogo() {
             btnProx.disabled = true
             btnSubmeter.disabled = true
             btnConcluir.disabled = false
             btnTentarNovamente.disabled = false
             numTentaivas++;
-            window.location = "dashboard.html";
-            document.getElementById('dashboard').style.display = "flex"
-
-
-    fetch("/quiz/inserirDados", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nuvemServer: nuvemGeral,
-        historia_nuvemServer: historiaNuvem ,
-        vantagens_nuvemServer:  vantagensNuvem,
-        iamServer: iam,
-        ec2Server: ec2,
-        s3Server:s3, 
-        num_acertosServer: certas,  
-        id_usuarioServer: idUsuario,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-        if (resposta.ok) {
-            setTimeout(() => {
-            window.location = 'dashboard.html';
-          }, "2000");
-
-          limparSessao();    }
-        })
-
-
-        function contarTentativas() {
-        fetch(`/quiz/contarTentativas/${idUsuario}`, {
-            method: "GET"
-        })
+            fetch("/quiz/inserirDados", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                nuvemServer: nuvemGeral,
+                historia_nuvemServer: historiaNuvem,
+                vantagens_nuvemServer: vantagensNuvem,
+                iamServer: iam,
+                ec2Server: ec2,
+                s3Server: s3,
+                num_acertosServer: certas,
+                id_usuarioServer: idUsuario,
+              }),
+            })
             .then(function (resposta) {
-                if (resposta.ok) {
-                    resposta.json().then(function (resultado) {
-                        console.log("Resultado das tentativas:", resultado);
-                        if (resultado[0].tentativas > 0) {
-                            alert("Você já realizou este quiz!");
-                            document.getElementById('dashboard').style.display = "flex"
-
-                        }
-                    });
-                } else {
-                    console.error("Erro na resposta da API");
-                    document.getElementById('dashboard').style.display = "none"
-
-                }
+              console.log("resposta: ", resposta);
+              if (resposta.ok) {
+                  setTimeout(() => {
+                  window.location = 'dashboard.html';
+                }, "200");
+              }
             })
             .catch(function (erro) {
-                console.error("Erro no fetch:", erro);
+                console.error("Erro no fetch ao finalizar o jogo:", erro);
             });
-        }
-    }
-</script>
+        } // Fim da função finalizarJogo
+
+    </script>

@@ -39,24 +39,8 @@ function inserirDados(req, res) {
         id_usuario,
       )
       .then(function (insercao_quiz) {
-        console.log(`\nResultados encontrados: ${insercao_quiz.length}`);
-        console.log(`Resultados: ${JSON.stringify(insercao_quiz)}`); // transforma JSON em String
-
-        if (insercao_quiz.length == 1) {
-          console.log(insercao_quiz);
-          res.json({
-            nuvem: insercao_quiz[0].nuvem,
-            historia_nuvem: insercao_quiz[0].historia_nuvem,
-            vantagens_nuvem: insercao_quiz[0].vantagens_nuvem,
-            iam: insercao_quiz[0].iam,
-            ec2: insercao_quiz[0].ec2,
-            s3: insercao_quiz[0].s3,
-            num_acertos: insercao_quiz[0].num_acertos,
-            id_usuario: insercao_quiz[0].id_usuario,
-          });
-        } else if (insercao_quiz.length == 0) {
-          res.status(403).send("Nada encontrado");
-        }
+        console.log(`\nResultados encontrados: sucesso na inserção`);
+        res.status(200).json(insercao_quiz);
       })
       .catch(function (erro) {
         console.log(erro);
