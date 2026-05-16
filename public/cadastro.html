@@ -216,7 +216,6 @@
     } else if (
       !(
         emailVar.includes("@sptech.school") ||
-        emailVar.includes(".") ||
         emailVar.includes("@gmail.com") ||
         emailVar.includes("@outlook.com")
       )
@@ -238,7 +237,7 @@
       finalizarAguardar();
       return false;
     } else {
-      setInterval(sumirMensagem, 5000);
+      setInterval(sumirMensagem, 500);
     }
 
     // Enviando o valor da nova input

@@ -114,145 +114,192 @@
 </html>
     <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-  fkUsuario = sessionStorage.ID_USUARIO;
+  idUsuario = sessionStorage.ID_USUARIO;
 
         const listaDeQuestoes = [
     {
-        pergunta: "Imagina que um desenvolvedor expôs as chaves da conta no GitHub e o sistema foi invadido. Segundo seu conteúdo sobre Segurança e IAM, de quem é a responsabilidade técnica e quem deveria 'barrar' esse acesso?",
-        alternativaA: "A responsabilidade é da AWS, que deveria ter um firewall físico.",
-        alternativaB: "Do cliente, pois o IAM é o 'guarda' que define permissões e acessos.",
-        alternativaC: "Do provedor de internet, que permitiu o upload do código.",
-        alternativaD: "Da Amazon, pois a nuvem é a única responsável pela segurança total.",
-        alternativaE: "Ninguém falhou, invasões são inevitáveis no modelo On-premises.",
-        alternativaCorreta: "alternativaB"  
+        pergunta: "Uma empresa de e-commerce precisa de alto poder de processamento para realizar análises de dados pesadas, mas quer evitar o custo de adquirir hardware físico. Qual recurso AWS permite criar máquinas substituindo esses computadores físicos?",
+        alternativaA: "Pastas de arquivos do S3.",
+        alternativaB: "As chaves de acesso do IAM.",
+        alternativaC: "As instâncias do EC2, que são computadores virtuais.",
+        alternativaD: "Servidores físicos instalados na própria empresa.",
+        alternativaE: "Sistemas prontos como o Gmail.",
+        alternativaCorreta: "alternativaC",
+        tema: "EC2"
     },
     {
-        pergunta: "O FaaS (Serverless) é a evolução máxima da economia. Usando o seu exemplo do banco, por que esse modelo é mais eficiente que o PaaS tradicional?",
-        alternativaA: "Porque ele roda 24h por dia garantindo que o banco nunca feche.",
-        alternativaB: "Porque ele é um serviço gratuito oferecido pela Microsoft.",
-        alternativaC: "Porque o código só 'acorda' quando é acionado e você só paga pelos milissegundos de uso.",
-        alternativaD: "Porque ele dispensa o uso de internet para transações financeiras.",
-        alternativaE: "Porque ele permite instalar sistemas operacionais customizados manualmente.",
-        alternativaCorreta: "alternativaC"  
-    },
-    {
-        pergunta: "Em 2006, a Amazon lançou o EC2 para resolver um problemão da época. O que esse serviço trouxe de tão inovador para o mercado?",
-        alternativaA: "A criação de instâncias virtuais para compartilhar hardware de forma isolada e segura.",
-        alternativaB: "O lançamento do primeiro satélite de dados da AWS.",
-        alternativaC: "A invenção da internet banda larga para empresas.",
-        alternativaD: "Um serviço de entrega de servidores físicos na porta da empresa.",
-        alternativaE: "O fim da necessidade de usar senhas em computadores.",
-        alternativaCorreta: "alternativaA"  
-    },
-    {
-        pergunta: "No seu texto sobre o S3, ele é descrito como um 'diretório de arquivos mil vezes melhor'. Qual o papel principal dele na integração com as máquinas EC2?",
-        alternativaA: "Processar os dados brutos enquanto o EC2 serve apenas de monitor.",
-        alternativaB: "Garantir a persistência dos dados, guardando o que é processado e evitando perdas.",
-        alternativaC: "Substituir a necessidade de ter uma conta na AWS.",
-        alternativaD: "Aumentar a velocidade da CPU da máquina virtual via Wi-Fi.",
-        alternativaE: "Apagar automaticamente arquivos que não são usados há mais de uma hora.",
-        alternativaCorreta: "alternativaB"  
-    },
-    {
-        pergunta: "Uma startup que surge 'do dia para a noite' precisa de uma vantagem específica da nuvem para atender o mundo inteiro rapidamente. Que vantagem é essa?",
-        alternativaA: "Design Responsivo.",
-        alternativaB: "Baixo custo de energia elétrica no escritório.",
-        alternativaC: "Escalabilidade global em poucos minutos.",
-        alternativaD: "Suporte técnico presencial da Amazon.",
-        alternativaE: "Ter um servidor físico debaixo da mesa do CEO.",
-        alternativaCorreta: "alternativaC"  
-    },
-    {
-        pergunta: "O modelo On-premises é o 'jeito antigo' de fazer as coisas. Qual é a principal barreira desse modelo para novas empresas citada no seu site?",
-        alternativaA: "A falta de cabos de rede no mercado.",
-        alternativaB: "O alto investimento inicial (CAPEX) e a manutenção complexa.",
-        alternativaC: "O fato de ser um modelo totalmente gratuito e instável.",
-        alternativaD: "A impossibilidade de usar o Windows em servidores próprios.",
-        alternativaE: "Não existe barreira, o On-premises é mais rápido que a nuvem.",
-        alternativaCorreta: "alternativaB"  
-    },
-    {
-        pergunta: "Na sua explicação sobre o EC2, você menciona que ele permite processar tarefas simultaneamente sem pagar o preço de um servidor físico caro. Como ele faz isso?",
-        alternativaA: "Através da criação de instâncias que são computadores virtuais potentes.",
-        alternativaB: "Usando a energia solar dos datacenters da Amazon.",
-        alternativaC: "Dividindo o custo da conta de luz com o vizinho da empresa.",
-        alternativaD: "Transformando o S3 em uma CPU de alta velocidade.",
-        alternativaE: "O EC2 na verdade é um software de chat para desenvolvedores.",
-        alternativaCorreta: "alternativaA" 
-    },
-    {
-        pergunta: "O IAM é comparado ao 'segurança de uma balada'. Se você quiser que uma pessoa mexa apenas no S3 e outra seja gerente, onde você configura isso?",
-        alternativaA: "Nas configurações de hardware do servidor físico.",
-        alternativaB: "Diretamente no código-fonte da aplicação.",
-        alternativaC: "Nas políticas e permissões dentro do serviço IAM.",
-        alternativaD: "No chat de suporte da Hostinger.",
-        alternativaE: "Ligando para o SAC da Amazon e pedindo autorização.",
-        alternativaCorreta: "alternativaC" 
-    },
-    {
-        pergunta: "Sobre os modelos de serviço, qual deles é focado em desenvolvedores que querem apenas 'colocar o código no ar' sem gerenciar o Sistema Operacional?",
-        alternativaA: "IaaS.",
-        alternativaB: "SaaS.",
-        alternativaC: "PaaS.",
-        alternativaD: "On-premises.",
-        alternativaE: "Correio eletrônico.",
-        alternativaCorreta: "alternativaC"  
-    },
-    {
-        pergunta: "A ideia da nuvem não é nova. Segundo seu site, em 1960 já existia um conceito que foi o primeiro passo para o que temos hoje. Qual era esse conceito?",
-        alternativaA: "Internet das Coisas (IoT).",
-        alternativaB: "Inteligência Artificial Generativa.",
+        pergunta: "No contexto da evolução da computação, qual conceito da década de 60 permitiu que vários usuários utilizassem os recursos de um único computador para diferentes tarefas simultaneamente?",
+        alternativaA: "A conexão automática de aparelhos eletrônicos.",
+        alternativaB: "Sistemas de moedas digitais.",
         alternativaC: "Tempo Compartilhado (Time-sharing).",
-        alternativaD: "Blockchain e Criptomoedas.",
-        alternativaE: "Redes Sociais de computadores.",
-        alternativaCorreta: "alternativaC" 
+        alternativaD: "Tecnologia Serverless sem nenhum servidor.",
+        alternativaE: "Robôs com inteligência parecida com a humana.",
+        alternativaCorreta: "alternativaC",
+        tema: "História"
     },
     {
-        pergunta: "Para uma empresa que não quer gerenciar nada técnico e apenas usar ferramentas como Gmail ou Slack, qual modelo de nuvem ela está consumindo?",
-        alternativaA: "IaaS.",
-        alternativaB: "PaaS.",
-        alternativaC: "SaaS.",
-        alternativaD: "FaaS.",
-        alternativaE: "Nuvem Privada de hardware.",
-        alternativaCorreta: "alternativaC"  
+        pergunta: "Um desenvolvedor precisa executar uma função de validação de dados que dura apenas 2 segundos e ocorre poucas vezes ao dia. Para garantir o menor custo, qual modelo de serviço deve ser adotado?",
+        alternativaA: "Alugar a infraestrutura de rede básica.",
+        alternativaB: "Contratar uma plataforma pronta para programadores.",
+        alternativaC: "FaaS (Serverless), onde o código só acorda quando é chamado.",
+        alternativaD: "Montar uma sala cheia de computadores físicos próprios.",
+        alternativaE: "Usar um aplicativo pronto para o usuário final.",
+        alternativaCorreta: "alternativaC",
+        tema: "Modelos"
     },
     {
-        pergunta: "Na década de 90, algo surgiu como a 'peça que faltava' para conectar o mundo e permitir a distribuição de informações de forma eficiente. O que foi?",
-        alternativaA: "O Windows 95.",
+        pergunta: "Ao adotar o modelo 'Pay-as-you-go', uma startup consegue trocar grandes investimentos iniciais (CAPEX) por custos variáveis. Qual analogia do seu conteúdo melhor descreve esse modelo financeiro?",
+        alternativaA: "Pagar um valor fixo por ano, igual ao aluguel de uma casa.",
+        alternativaB: "Pagar apenas pelo que consome, igual a uma conta de água ou luz.",
+        alternativaC: "Parcelar computadores caros em até 60 vezes.",
+        alternativaD: "Usar o sistema de graça em troca de ver propagandas na tela.",
+        alternativaE: "Comprar um gerador elétrico para não pagar a concessionária de energia.",
+        alternativaCorreta: "alternativaB",
+        tema: "Estratégia"
+    },
+    {
+        pergunta: "Sua aplicação gera milhares de logs e backups que precisam de segurança extrema e alta disponibilidade. Qual serviço AWS garante a persistência desses dados, funcionando como um diretório altamente escalável?",
+        alternativaA: "As máquinas virtuais do EC2.",
+        alternativaB: "As permissões e chaves de acesso do IAM.",
+        alternativaC: "O Amazon S3, que funciona como um diretório de arquivos inteligente.",
+        alternativaD: "Os discos rígidos guardados no escritório da empresa.",
+        alternativaE: "A memória rápida temporária do computador do usuário.",
+        alternativaCorreta: "alternativaC",
+        tema: "S3"
+    },
+    {
+        pergunta: "No Modelo de Responsabilidade Compartilhada, se houver um vazamento de dados devido a permissões mal configuradas, de quem é a responsabilidade técnica segundo o alerta em seu site?",
+        alternativaA: "Totalmente da AWS, por fornecer a rede e a internet.",
+        alternativaB: "Do próprio cliente, que precisa estudar e configurar as coisas direito.",
+        alternativaC: "Da empresa que fornece a internet para o escritório.",
+        alternativaD: "Do fabricante que vendeu as peças dos computadores.",
+        alternativaE: "De ninguém, já que vazamentos são coisas normais da internet.",
+        alternativaCorreta: "alternativaB",
+        tema: "IAM"
+    },
+    {
+        pergunta: "Qual foi o marco histórico da Amazon em 2006 que permitiu às empresas escalarem sua infraestrutura através de hardware compartilhado e isolado via software?",
+        alternativaA: "O lançamento do serviço de guardar arquivos S3.",
+        alternativaB: "A criação de um chat para os funcionários conversarem.",
+        alternativaC: "O lançamento das máquinas virtuais do Amazon EC2.",
+        alternativaD: "A instalação dos primeiros cabos de internet do mundo.",
+        alternativaE: "A abertura da primeira loja de livros da Amazon.",
+        alternativaCorreta: "alternativaC",
+        tema: "História"
+    },
+    {
+        pergunta: "Uma empresa quer focar exclusivamente no desenvolvimento do seu software, deixando a gestão do sistema operacional e do hardware totalmente para o provedor. Qual modelo atende esse requisito?",
+        alternativaA: "Modelo onde o cliente gerencia os servidores e a rede.",
+        alternativaB: "PaaS (Plataforma como Serviço), onde você foca só no seu código.",
+        alternativaC: "Modelo antigo com computadores físicos na própria empresa.",
+        alternativaD: "Alugar um espaço físico para colocar seus próprios computadores.",
+        alternativaE: "Modelo onde você precisa levar seu próprio computador de casa.",
+        alternativaCorreta: "alternativaB",
+        tema: "Modelos"
+    },
+    {
+        pergunta: "Para garantir que o 'segurança da balada' (IAM) funcione corretamente, qual ação é necessária para definir que um funcionário pode ler arquivos no S3, mas não deletá-los?",
+        alternativaA: "Aumentar a potência e a memória do EC2.",
+        alternativaB: "Trocar a senha de administrador do computador do chefe.",
+        alternativaC: "Configurar as regras de permissão de acesso dentro do IAM.",
+        alternativaD: "Ir até o prédio da Amazon e reiniciar o computador deles.",
+        alternativaE: "Criar uma conta nova em aplicativos como o Slack.",
+        alternativaCorreta: "alternativaC",
+        tema: "IAM"
+    },
+    {
+        pergunta: "Por que o Amazon S3 é considerado uma solução superior para armazenamento de arquivos em comparação ao armazenamento em máquinas virtuais simples?",
+        alternativaA: "Porque ele apaga arquivos antigos sozinho para não ocupar espaço.",
+        alternativaB: "Porque ele oferece muito espaço e foca em não deixar nenhum arquivo sumir.",
+        alternativaC: "Porque ele funciona perfeitamente mesmo se você estiver sem internet.",
+        alternativaD: "Porque ele roda o código do site muito mais rápido.",
+        alternativaE: "Porque ele dispensa a necessidade de criar uma conta na Amazon.",
+        alternativaCorreta: "alternativaB",
+        tema: "S3"
+    },
+    {
+        pergunta: "Qual peça fundamental surgiu na década de 90, permitindo que a nuvem deixasse de ser um conceito teórico e passasse a ser um sistema de distribuição global?",
+        alternativaA: "Os chips de computadores modernos de 64 bits.",
         alternativaB: "A Internet.",
-        alternativaC: "O Satélite de comunicação da AWS.",
-        alternativaD: "O cabo de fibra ótica submarino.",
-        alternativaE: "O computador de mesa da Apple.",
-        alternativaCorreta: "alternativaB" 
+        alternativaC: "Os satélites de comunicação no espaço.",
+        alternativaD: "Sistemas de Inteligência Artificial.",
+        alternativaE: "Os primeiros celulares com tela de toque.",
+        alternativaCorreta: "alternativaB",
+        tema: "História"
     },
     {
-        pergunta: "O 'Pay-as-you-go' é um pilar da economia na nuvem. O que esse termo realmente significa na prática para o financeiro de uma empresa?",
-        alternativaA: "Pagar um valor fixo por mês, independente do uso.",
-        alternativaB: "Pagar apenas pelo que realmente consome, como uma conta de luz.",
-        alternativaC: "Comprar os servidores e pagar apenas a manutenção.",
-        alternativaD: "Receber o serviço de graça e pagar com dados dos usuários.",
-        alternativaE: "Pagar adiantado por 10 anos de uso para ganhar desconto.",
-        alternativaCorreta: "alternativaB" 
+        pergunta: "Uma startup precisa suportar um crescimento repentino de usuários em minutos sem precisar comprar novos equipamentos físicos. Qual pilar da nuvem garante essa agilidade?",
+        alternativaA: "Ter muros e portões seguros no prédio.",
+        alternativaB: "Pagar o mesmo valor fixo todo mês.",
+        alternativaC: "A Escalabilidade, que deixa o sistema crescer conforme a demanda.",
+        alternativaD: "Fazer a manutenção dos computadores manualmente na empresa.",
+        alternativaE: "Estar localizado na mesma cidade que os clientes.",
+        alternativaCorreta: "alternativaC",
+        tema: "Estratégia"
     },
     {
-        pergunta: "Sobre a segurança na nuvem, seu texto deixa um alerta: 'a nuvem não é a única responsável'. O que o cliente precisa fazer para evitar vazamentos?",
-        alternativaA: "Nada, a AWS garante 100% de proteção automática.",
-        alternativaB: "Saber o que faz e configurar as permissões corretamente.",
-        alternativaC: "Contratar um plano de internet mais caro.",
-        alternativaD: "Desligar os servidores durante a noite.",
-        alternativaE: "Usar senhas de apenas 4 números para facilitar o acesso.",
-        alternativaCorreta: "alternativaB" 
+        pergunta: "Qual a principal função do IAM em um ambiente corporativo AWS para evitar que 'dê ruim' nas operações da empresa?",
+        alternativaA: "Deixar o design do site mais moderno e bonito.",
+        alternativaB: "Controlar quem tem permissão para entrar e mexer em cada serviço.",
+        alternativaC: "Fazer cópias de segurança de todas as fotos do sistema.",
+        alternativaD: "Fazer os vídeos do site carregarem mais rápido no EC2.",
+        alternativaE: "Diminuir o consumo de dados da internet da empresa.",
+        alternativaCorreta: "alternativaB",
+        tema: "IAM"
     },
     {
-        pergunta: "Se alguém invadir seu sistema AWS e deletar tudo, você disse que 'daria muito ruim'. Qual serviço é o guarda que barra qualquer um sem permissão?",
-        alternativaA: "EC2.",
-        alternativaB: "S3.",
-        alternativaC: "IAM.",
-        alternativaD: "Google Drive.",
-        alternativaE: "Outlook.",
-        alternativaCorreta: "alternativaC" 
+        pergunta: "Se você precisa de flexibilidade para aumentar ou diminuir a capacidade de processamento de um app conforme a demanda do mercado, qual serviço AWS é o mais indicado?",
+        alternativaA: "O diretório de arquivos S3.",
+        alternativaB: "As instâncias do Amazon EC2.",
+        alternativaC: "O painel de controle do IAM.",
+        alternativaD: "Sistemas de terceiros como o Google Drive.",
+        alternativaE: "Um computador físico fixo trancado na empresa.",
+        alternativaCorreta: "alternativaB",
+        tema: "EC2"
+    },
+    {
+        pergunta: "O modelo On-premises exige que a empresa cuide desde a limpeza do data center até a segurança física. Como seu conteúdo define o custo financeiro desse modelo?",
+        alternativaA: "Investimento inicial muito barato e fácil de crescer.",
+        alternativaB: "Gasto inicial muito alto e uma grande trabalheira para manter.",
+        alternativaC: "Um modelo totalmente gratuito feito para empresas de tecnologia.",
+        alternativaD: "A empresa paga apenas uma taxa baseada no tráfego da internet.",
+        alternativaE: "Um modelo focado em economizar dinheiro no curto prazo.",
+        alternativaCorreta: "alternativaB",
+        tema: "Estratégia"
+    },
+    {
+        pergunta: "Ao utilizar ferramentas como Slack ou Salesforce para comunicação e vendas, a empresa está operando em qual modelo de serviço de nuvem?",
+        alternativaA: "Modelo onde você configura a rede e as máquinas virtuais.",
+        alternativaB: "Modelo focado apenas em ferramentas de programação.",
+        alternativaC: "SaaS (Software como Serviço), onde você só usa o aplicativo pronto.",
+        alternativaD: "Modelo focado em códigos que rodam por poucos segundos.",
+        alternativaE: "Sistemas instalados fisicamente nos computadores da empresa.",
+        alternativaCorreta: "alternativaC",
+        tema: "Modelos"
+    },
+    {
+        pergunta: "Na arquitetura moderna, como o Amazon S3 e o Amazon EC2 costumam trabalhar juntos para otimizar a operação?",
+        alternativaA: "O S3 faz o processamento pesado e o EC2 vira uma pasta de arquivos.",
+        alternativaB: "O EC2 funciona como o cérebro que processa e o S3 guarda o resultado com segurança.",
+        alternativaC: "Os dois serviços brigam para ver quem rouba mais espaço em disco.",
+        alternativaD: "O S3 desliga os computadores do EC2 para economizar energia.",
+        alternativaE: "Eles são serviços trancados e não conversam entre si.",
+        alternativaCorreta: "alternativaB",
+        tema: "S3"
+    },
+    {
+        pergunta: "Qual característica do EC2 o torna essencial para evitar gastos desnecessários com servidores físicos subutilizados?",
+        alternativaA: "Eles são computadores de tamanho fixo que nunca podem ser alterados.",
+        alternativaB: "Eles são computadores virtuais criados sob demanda que você ajusta quando quiser.",
+        alternativaC: "Eles funcionam apenas para gerenciar as caixas de e-mail da empresa.",
+        alternativaD: "Eles funcionam como gavetas digitais estáticas para guardar arquivos.",
+        alternativaE: "Eles rodam de graça sem precisar criar nenhuma conta no site.",
+        alternativaCorreta: "alternativaB",
+        tema: "EC2"
     }
+
 ];
+
     
         // variáveis globais    
         let numTentaivas = 0
@@ -268,13 +315,14 @@
         let nuvemGeral = 0
         let historiaNuvem = 0
         let vantagensNuvem = 0
-        // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
-    
+        fezQuiz = sessionStorage.FK_USUARIO
+        
         function onloadEsconder() {
             document.getElementById('pontuacao').style.display = "none"
             document.getElementById('pontuacaoEJogo').style.display = "none"
             document.getElementById('jogo').style.display = "none"
             document.getElementById('dashboard').style.display = "none"
+            contarTentativas()
         }
     
         function iniciarQuiz() {
@@ -315,11 +363,11 @@
             for (let i = 0; i < options.length; i++) {
                 if (options[i].checked) {
                     hasChecked = true
-                    if(numeroDaQuestaoAtual == 14){
-            document.getElementById('btnConcluir').style.display = "flex"
-            document.getElementById('btnProx').style.display = "none"
-            btnConcluir.disabled = false
-            }
+                    if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
+                        document.getElementById('btnConcluir').style.display = "flex"
+                        document.getElementById('btnProx').style.display = "none"
+                        btnConcluir.disabled = false
+                    }
                     break
                 }
             }
@@ -381,34 +429,24 @@
                 }
             })
     
-            // verifica se resposta assinalada é correta
             options.forEach((option) => {
                 if (option.checked === true && option.value === respostaQuestaoAtual) {
                     document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
                     pontuacaoFinal++
                     certas++
-                    if (numeroDaQuestaoAtual == 0 || numeroDaQuestaoAtual == 11){
+                    const tema = questaoAtual.tema;
+                    if (tema === "História") {
                         historiaNuvem++;
-                    } else if(
-                        numeroDaQuestaoAtual == 1 ||
-                        numeroDaQuestaoAtual == 4 ||
-                        numeroDaQuestaoAtual == 5 ||
-                        numeroDaQuestaoAtual == 8 ||
-                        numeroDaQuestaoAtual == 9 ||
-                        numeroDaQuestaoAtual == 13
-                    )
-                    {
-                        nuvemGeral++
-                    } else if(numeroDaQuestaoAtual == 3 || numeroDaQuestaoAtual == 10 || numeroDaQuestaoAtual == 12){
-                        vantagensNuvem++
-                    } else if(numeroDaQuestaoAtual == 2){
-                        ec2++
-                    } else if(numeroDaQuestaoAtual == 6){
-                        s3++
-                    } else if(numeroDaQuestaoAtual == 7 || numeroDaQuestaoAtual == 14){
-                        iam++
-                    } else if(numeroDaQuestaoAtual == 14){
-                        numTentaivas++;
+                    } else if (tema === "Modelos") {
+                        nuvemGeral++;
+                    } else if (tema === "Estratégia") {
+                        vantagensNuvem++;
+                    } else if (tema === "EC2") {
+                        ec2++;
+                    } else if (tema === "S3") {
+                        s3++;
+                    } else if (tema === "IAM" || tema === "IAM") {
+                        iam++;
                     }
                     document.getElementById("spanCertas").innerHTML = certas
                     numeroDaQuestaoAtual++
@@ -449,15 +487,12 @@
             document.getElementById('dashboard').style.display = "flex"
 
 
-    // Enviando o valor da nova input
     fetch("/quiz/inserirDados", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nuvemServer: nuvemGeral,
         historia_nuvemServer: historiaNuvem ,
         vantagens_nuvemServer:  vantagensNuvem,
@@ -465,26 +500,43 @@
         ec2Server: ec2,
         s3Server:s3, 
         num_acertosServer: certas,  
-        id_usuarioServer: fkUsuario,
+        id_usuarioServer: idUsuario,
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
-
         if (resposta.ok) {
-          setTimeout(() => {
+            setTimeout(() => {
             window.location = 'dashboard.html';
           }, "2000");
 
-          limparFormulario();
-        } else {
-          throw "Não foi possível inserir dados no banco";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
+          limparSessao();    }
+        })
 
-    return false;
-  }
-    </script>
+
+        function contarTentativas() {
+        fetch(`/quiz/contarTentativas/${idUsuario}`, {
+            method: "GET"
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (resultado) {
+                        console.log("Resultado das tentativas:", resultado);
+                        if (resultado[0].tentativas > 0) {
+                            alert("Você já realizou este quiz!");
+                            document.getElementById('dashboard').style.display = "flex"
+
+                        }
+                    });
+                } else {
+                    console.error("Erro na resposta da API");
+                    document.getElementById('dashboard').style.display = "none"
+
+                }
+            })
+            .catch(function (erro) {
+                console.error("Erro no fetch:", erro);
+            });
+        }
+    }
+</script>

@@ -11,5 +11,8 @@ router.post("/inserirDados", function (req, res) {
 router.get("/listarDados", function (req, res) {
   quizController.listarDados(req, res);
 });
+router.get("/contarTentativas/:idUsuario", function (req, res) {
+  quizController.contarTentativas(req, res);
+});
 
 module.exports = router;
