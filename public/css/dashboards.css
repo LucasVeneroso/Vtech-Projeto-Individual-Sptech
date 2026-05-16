@@ -237,13 +237,13 @@ body {
   cursor: pointer;
 }
 
-.btn-pink {
+.btn-blue {
   color: white;
-  background-color: #e6005a;
+  background-color: #32b9cd;
 }
 
 .btn-white {
-  color: #e6005a;
+  color: #32b9cd;
   background-color: white;
 }
 
@@ -308,6 +308,7 @@ body {
 
 .header-left h1 {
   color: #32b9cd;
+  font-size: 70px;
 }
 
 .hello {
@@ -317,9 +318,10 @@ body {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: #32b9cd;
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 22px;
+  text-shadow: #32b9cd 0px 0px 10px;
 }
 
 .hello h3 span {
@@ -329,7 +331,7 @@ body {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: #32b9cd;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
@@ -338,14 +340,14 @@ body {
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #e6005a;
+  border: 3px solid #32b9cd;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: #32b9cd;
   padding: 0;
   margin: 0;
 }

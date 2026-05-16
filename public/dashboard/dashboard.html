@@ -57,7 +57,7 @@
     </div>
     <div class="dash">
       <div class="kpis">
-        <div class="kpi"><span>Numero Acertos</span></div>
+        <div class="kpi"><span>20</span></div>
         <div class="kpi">
           <canvas id="porcentagem"></canvas>
         </div>
@@ -85,7 +85,7 @@
 
   let proximaAtualizacao;
 
-  window.onload = iniciarDashboard;
+  window.onload = iniciarDashboard();
 
   function iniciarDashboard() {
     const dados = [];
@@ -142,7 +142,7 @@
       clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/quiz/listarDados/:${fkUsuario}`, { cache: "no-store" })
+    fetch(`/quiz/listarDados/:${fkUsuario}}`, { cache: "no-store" })
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
@@ -239,7 +239,7 @@
   }
 
   function atualizarGrafico(fkUsuario, dados, myChart) {
-    fetch(`/medidas/tempo-real/${fkUsuario}`, { cache: "no-store" })
+    fetch(`/quiz/listarDados/:${fkUsuario}`, { cache: "no-store" })
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (novoRegistro) {
