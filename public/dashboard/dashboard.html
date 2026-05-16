@@ -165,7 +165,14 @@
   function plotarGrafico(resposta, fkUsuario) {
     console.log("iniciando plotagem do gráfico...");
 
-    const labelsMatérias = ["História", "Modelos", "Estratégia", "EC2", "S3", "IAM"];
+    const labelsMatérias = [
+      "História",
+      "Modelos",
+      "Estratégia",
+      "EC2",
+      "S3",
+      "IAM",
+    ];
 
     const dadosGrafico = {
       labels: labelsMatérias,
@@ -221,8 +228,14 @@
       },
     };
 
-    const chartBarras = new Chart(document.getElementById("myChart"), configBarras);
-    const chartPorcentagem = new Chart(document.getElementById("porcentagem"), configPorcentagem);
+    const chartBarras = new Chart(
+      document.getElementById("myChart"),
+      configBarras,
+    );
+    const chartPorcentagem = new Chart(
+      document.getElementById("porcentagem"),
+      configPorcentagem,
+    );
   }
 
   function atualizarGrafico(fkUsuario, dados, myChart) {
@@ -290,5 +303,9 @@
           `Erro na obtenção dos dados p/ gráfico: ${error.message}`,
         );
       });
+  }
+  function limparSessao() {
+    sessionStorage.clear();
+    window.location = "../index.html";
   }
 </script>
