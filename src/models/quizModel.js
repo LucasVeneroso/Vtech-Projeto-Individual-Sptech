@@ -19,14 +19,22 @@ function inserirDados(
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function listarDados() {
   var instrucaoSql = `
-        SELECT num_acertos, historia_nuvem, vantagens_nuvem, iam, ec2, s3 FROM quiz;
+        SELECT nuvem, historia_nuvem, vantagens_nuvem, iam, ec2, s3 FROM quiz WHERE id_usuario = ${id_usuario} LIMIT 1;
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
 
-function contarTentativas(idUsuario){
-  let instrucaoSql = `SELECT COUNT(id_usuario) as tentativas FROM quiz WHERE id_usuario = ${idUsuario};`
+function contarAcertos() {
+  var instrucaoSql = `
+        SELECT num_acertos FROM quiz WHERE id_usuario = ${id_usuario} LIMIT 1;
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function contarTentativas(idUsuario) {
+  let instrucaoSql = `SELECT COUNT(id_usuario) as tentativas FROM quiz WHERE id_usuario = ${idUsuario};`;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
@@ -34,5 +42,6 @@ function contarTentativas(idUsuario){
 module.exports = {
   inserirDados,
   listarDados,
-  contarTentativas
+  contarTentativas,
+  contarAcertos,
 };
