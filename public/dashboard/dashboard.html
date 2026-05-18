@@ -90,6 +90,7 @@
   function iniciarDashboard() {
     if (idUsuario) {
       obterDadosGrafico(idUsuario);
+      obterDadosGraficoPorcentagem(idUsuario);
     } else {
       console.error("ID do usuário não encontrado na sessão.");
     }
@@ -198,13 +199,45 @@
       data: dadosGrafico,
     };
 
-    const configPorcentagem = {
+    const chartBarras = new Chart(
+      document.getElementById("myChart"),
+      configBarras,
+    );
+  }
+
+  function obterDadosGraficoPorcentagem(idUsuario) {
+    fetch(`/quiz/contarAcertos/${idUsuario}`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (respostaPorcentagem) {
+            console.log(
+              `Dados recebidos: ${JSON.stringify(respostaPorcentagem)}`,
+            );
+            respostaPorcentagem.reverse();
+            contarAcertos(respostaPorcentagem, idUsuario);
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
+        }
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico de porcentagem: ${error.message}`,
+        );
+      });
+      let acertos = sessionStorage.NUMERO_ACERTOS
+  }
+
+  function contarAcertos(respostaPorcentagem, idUsuario) {
+    let configPorcentagem = {
       type: "doughnut",
+      labels: ["Acertos", "Erros"],
       data: {
         datasets: [
           {
-            data: [70, 30],
-            backgroundColor: ["#8BC34A", "#324001"],
+            label: "Porcentagem",
+            data: [],
+            backgroundColor: ["green", "red"],
             borderWidth: 0,
           },
         ],
@@ -221,10 +254,14 @@
       },
     };
 
-    const chartBarras = new Chart(
-      document.getElementById("myChart"),
-      configBarras,
-    );
+    for (let i = 0; i < respostaPorcentagem.length; i++) {
+      resultado = respostaPorcentagem[i];
+      configPorcentagem.data.datasets[i].data.push(
+        (100 - ((Number(resultado.num_acertos) / 100) * 18)),
+        ((Number(resultado.num_acertos) * 18) / 100),
+      );
+    }
+
     const chartPorcentagem = new Chart(
       document.getElementById("porcentagem"),
       configPorcentagem,

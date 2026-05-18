@@ -26,9 +26,9 @@ function listarDados(idUsuario) {
   return database.executar(instrucaoSql);
 }
 
-function contarAcertos() {
+function contarAcertos(idUsuario) {
   var instrucaoSql = `
-        SELECT num_acertos FROM quiz WHERE id_usuario = ${id_usuario} LIMIT 1;
+        SELECT num_acertos FROM quiz WHERE id_usuario = ${idUsuario} ORDER BY id DESC LIMIT 1;
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
