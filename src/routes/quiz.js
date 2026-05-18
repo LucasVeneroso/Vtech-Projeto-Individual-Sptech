@@ -8,7 +8,7 @@ router.post("/inserirDados", function (req, res) {
 });
 
 //Puxar do banco de dados
-router.get("/listarDados", function (req, res) {
+router.get("/listarDados/:idUsuario", function (req, res) {
   quizController.listarDados(req, res);
 });
 router.get("/contarTentativas/:idUsuario", function (req, res) {

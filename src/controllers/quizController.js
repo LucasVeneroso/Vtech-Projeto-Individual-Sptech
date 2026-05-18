@@ -54,33 +54,25 @@ function inserirDados(req, res) {
 }
 
 function listarDados(req, res) {
-  let nuvem = req.params.nuvemServer;
-  let historia_nuvem = req.params.historia_nuvemServer;
-  let vantagens_nuvem = req.params.vantagens_nuvemServer;
-  let iam = req.params.iamServer;
-  let ec2 = req.params.ec2Server;
-  let s3 = req.params.s3Server;
-  let num_acertos = req.params.num_acertosServer;
-  let id_usuario = req.params.id_usuarioServer;
+  let idUsuario = req.params.idUsuario;
 
-  if (nuvem == undefined) {
-    res.status(400).send("Sua nuvem está undefined!");
-  } else if (historia_nuvem == undefined) {
-    res.status(400).send("Sua historia_nuvem está indefinida!");
-  } else if (vantagens_nuvem == undefined) {
-    res.status(400).send("Sua vantagens_nuvem está indefinida!");
-  } else if (iam == undefined) {
-    res.status(400).send("Seu iam está undefined!");
-  } else if (ec2 == undefined) {
-    res.status(400).send("Seu ec2 está undefined!");
-  } else if (s3 == undefined) {
-    res.status(400).send("Seu s3 está undefined!");
-  } else if (num_acertos == undefined) {
-    res.status(400).send("Seu num_acertos está undefined!");
-  } else if (id_usuario == undefined) {
-    res.status(400).send("Seu id_usuario está undefined!");
+  if (idUsuario == undefined) {
+    res.status(400).send("O ID do usuário está undefined!");
   } else {
-    quizModel;
+    usuarioModel
+      .listarDados(idUsuario)
+      .then(function (resultado) {
+        if (resultado.length > 0) {
+          res.status(200).json(resultado);
+        } else {
+          res.status(204).send("Nenhum resultado encontrado!");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os dados do quiz:", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+      });
   }
 }
 

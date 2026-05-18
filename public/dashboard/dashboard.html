@@ -25,7 +25,7 @@
     ></script>
   </head>
 
-  <body onload="atualizarFeed()">
+  <body onload="iniciarDashboard()">
     <div class="">
       <div class="header-left">
         <h1>Vtech</h1>
@@ -81,33 +81,25 @@
 
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-  fkUsuario = sessionStorage.ID_USUARIO;
+  idUsuario = sessionStorage.ID_USUARIO;
 
   let proximaAtualizacao;
 
-  window.onload = iniciarDashboard();
+  window.onload = iniciarDashboard;
 
   function iniciarDashboard() {
-    const dados = [];
-    plotarGrafico(dados, fkUsuario);
+    if (idUsuario) {
+      obterDadosGrafico(idUsuario);
+    } else {
+      console.error("ID do usuário não encontrado na sessão.");
+    }
   }
 
-  function alterarTitulo(fkUsuario) {
-    var tituloAquario = document.getElementById(`tituloAquario${fkUsuario}`);
-    var descricao = JSON.parse(sessionStorage.AQUARIOS).find(
-      (item) => item.id == fkUsuario,
-    ).descricao;
-    tituloAquario.innerHTML =
-      "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" +
-      descricao +
-      "</span>";
-  }
-
-  function exibirAquario(fkUsuario) {
+  function exibirAquario(idUsuario) {
     let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
 
     for (i = 0; i < todosOsGraficos.length; i++) {
-      if (todosOsGraficos[i].id != fkUsuario) {
+      if (todosOsGraficos[i].id != idUsuario) {
         let elementoAtual = document.getElementById(
           `grafico${todosOsGraficos[i].id}`,
         );
@@ -126,30 +118,24 @@
       }
     }
 
-    let graficoExibir = document.getElementById(`grafico${fkUsuario}`);
+    let graficoExibir = document.getElementById(`grafico${idUsuario}`);
     graficoExibir.classList.remove("display-none");
     graficoExibir.classList.add("display-block");
 
-    let btnExibir = document.getElementById(`btnAquario${fkUsuario}`);
+    let btnExibir = document.getElementById(`btnAquario${idUsuario}`);
     btnExibir.classList.remove("btn-white");
     btnExibir.classList.add("btn-pink");
   }
 
-  function obterDadosGrafico(quiz) {
-    alterarTitulo(quiz);
-
-    if (proximaAtualizacao != undefined) {
-      clearTimeout(proximaAtualizacao);
-    }
-
-    fetch(`/quiz/listarDados/:${fkUsuario}}`, { cache: "no-store" })
+  function obterDadosGrafico(idUsuario) {
+    fetch(`/quiz/listarDados/${idUsuario}`, { cache: "no-store" })
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
             resposta.reverse();
 
-            plotarGrafico(resposta, fkUsuario);
+            plotarGrafico(resposta, idUsuario);
           });
         } else {
           console.error("Nenhum dado encontrado ou erro na API");
@@ -162,7 +148,7 @@
       });
   }
 
-  function plotarGrafico(resposta, fkUsuario) {
+  function plotarGrafico(resposta, idUsuario) {
     console.log("iniciando plotagem do gráfico...");
 
     const labelsMatérias = [
@@ -174,12 +160,12 @@
       "IAM",
     ];
 
-    const dadosGrafico = {
+    let dadosGrafico = {
       labels: labelsMatérias,
       datasets: [
         {
           label: "Desempenho por Matéria",
-          data: [3, 3, 3, 3, 3, 3],
+          data: [],
           backgroundColor: [
             "rgba(0, 242, 255, 0.5)",
             "rgba(127, 0, 255, 0.5)",
@@ -195,9 +181,16 @@
       ],
     };
 
-    if (Array.isArray(resposta) && resposta.length) {
-      const valores = resposta.map((r) => r.acertos || 0);
-      dadosGrafico.datasets[0].data = valores;
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      dadosGrafico.datasets[0].data.push(
+        registro.historia_nuvem,
+        registro.nuvem,
+        registro.vantagens_nuvem,
+        registro.ec2,
+        registro.s3,
+        registro.iam,
+      );
     }
 
     const configBarras = {
@@ -238,72 +231,6 @@
     );
   }
 
-  function atualizarGrafico(fkUsuario, dados, myChart) {
-    fetch(`/quiz/listarDados/:${fkUsuario}`, { cache: "no-store" })
-      .then(function (response) {
-        if (response.ok) {
-          response.json().then(function (novoRegistro) {
-            obterdados(fkUsuario);
-            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-            console.log(`Dados atuais do gráfico:`);
-            console.log(dados);
-
-            let avisoCaptura = document.getElementById(
-              `avisoCaptura${fkUsuario}`,
-            );
-            avisoCaptura.innerHTML = "";
-
-            if (
-              novoRegistro[0].momento_grafico ==
-              dados.labels[dados.labels.length - 1]
-            ) {
-              console.log(
-                "---------------------------------------------------------------",
-              );
-              console.log(
-                "Como não há dados novos para captura, o gráfico não atualizará.",
-              );
-              avisoCaptura.innerHTML =
-                "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.";
-              console.log("Horário do novo dado capturado:");
-              console.log(novoRegistro[0].momento_grafico);
-              console.log("Horário do último dado capturado:");
-              console.log(dados.labels[dados.labels.length - 1]);
-              console.log(
-                "---------------------------------------------------------------",
-              );
-            } else {
-              dados.labels.shift();
-              dados.labels.push(novoRegistro[0].momento_grafico);
-
-              dados.datasets[0].data.shift();
-              dados.datasets[0].data.push(novoRegistro[0].umidade);
-
-              dados.datasets[1].data.shift();
-              dados.datasets[1].data.push(novoRegistro[0].temperatura);
-
-              myChart.update();
-            }
-
-            proximaAtualizacao = setTimeout(
-              () => atualizarGrafico(fkUsuario, dados, myChart),
-              2000,
-            );
-          });
-        } else {
-          console.error("Nenhum dado encontrado ou erro na API");
-          proximaAtualizacao = setTimeout(
-            () => atualizarGrafico(fkUsuario, dados, myChart),
-            2000,
-          );
-        }
-      })
-      .catch(function (error) {
-        console.error(
-          `Erro na obtenção dos dados p/ gráfico: ${error.message}`,
-        );
-      });
-  }
   function limparSessao() {
     sessionStorage.clear();
     window.location = "../index.html";
