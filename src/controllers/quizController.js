@@ -45,24 +45,23 @@ function inserirDados(req, res) {
       .catch(function (erro) {
         console.log(erro);
         console.log(
-          "\nHouve um erro ao realizar o login! Erro: ",
+          "\nHouve um erro ao realizar a inserção no banco de dados! Erro: ",
           erro.sqlMessage,
         );
-
         res.status(500).json(erro.sqlMessage);
       });
   }
 }
 
 function listarDados(req, res) {
-  let nuvem = req.param.nuvemServer;
-  let historia_nuvem = req.param.historia_nuvemServer;
-  let vantagens_nuvem = req.param.vantagens_nuvemServer;
-  let iam = req.param.iamServer;
-  let ec2 = req.param.ec2Server;
-  let s3 = req.param.s3Server;
-  let num_acertos = req.param.num_acertosServer;
-  let id_usuario = req.param.id_usuarioServer;
+  let nuvem = req.params.nuvemServer;
+  let historia_nuvem = req.params.historia_nuvemServer;
+  let vantagens_nuvem = req.params.vantagens_nuvemServer;
+  let iam = req.params.iamServer;
+  let ec2 = req.params.ec2Server;
+  let s3 = req.params.s3Server;
+  let num_acertos = req.params.num_acertosServer;
+  let id_usuario = req.params.id_usuarioServer;
 
   if (nuvem == undefined) {
     res.status(400).send("Sua nuvem está undefined!");
@@ -90,7 +89,24 @@ function contarTentativas(req, res) {
   if (id_usuario == undefined) {
     res.status(400).send("Usuário não encontrado");
   } else {
-    usuarioModel.contarTentativas(id_usuario)
+    usuarioModel
+      .contarTentativas(id_usuario)
+      .then(function (resultado) {
+        res.status(200).json(resultado);
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+function contarAcertos(req, res) {
+  let id_usuario = req.params.idUsuario;
+  if (id_usuario == undefined) {
+    res.status(400).send("Usuário não encontrado");
+  } else {
+    usuarioModel
+      .contarAcertos(id_usuario)
       .then(function (resultado) {
         res.status(200).json(resultado);
       })
@@ -104,4 +120,5 @@ module.exports = {
   inserirDados,
   listarDados,
   contarTentativas,
+  contarAcertos,
 };
