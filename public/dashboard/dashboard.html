@@ -57,23 +57,35 @@
     </div>
     <div class="dash">
       <div class="kpis">
-        <div class="kpi"><span>20</span></div>
+        <div class="kpi" id="Pontos a melhorar">
+          <h2>Pontos a Melhorar</h2>
+          <li id="lista_feedback">
+            <ul>
+              primeiro ponto
+            </ul>
+            <ul>
+              segugundo ponto
+            </ul>
+          </li>
+        </div>
         <div class="kpi">
+          <h1>Acertos</h1>
           <canvas id="porcentagem"></canvas>
         </div>
-        <div class="kpi"><span>Onde Melhorar</span></div>
+        <div class="kpi">
+          <h1>Pontos a melhorar</h1>
+          <li id="lista_feedback">
+            <ul>
+              primeiro ponto
+            </ul>
+            <ul>
+              segugundo ponto
+            </ul>
+          </li>
+        </div>
       </div>
       <div id="grafico">
         <canvas id="myChart"></canvas>
-      </div>
-      <div class="kpi" id="feedback">
-        <h1>feedback sobre seu Desempenho</h1>
-        <div id="pontos_a_mehorar">
-          <li id="lista_feedback">
-            Pontos a Melhorar
-            <ul></ul>
-          </li>
-        </div>
       </div>
     </div>
   </body>
@@ -225,10 +237,42 @@
           `Erro na obtenção dos dados p/ gráfico de porcentagem: ${error.message}`,
         );
       });
-      let acertos = sessionStorage.NUMERO_ACERTOS
+    let acertos = sessionStorage.NUMERO_ACERTOS;
   }
 
   function contarAcertos(respostaPorcentagem, idUsuario) {
+    let pluginTextoCentral = {
+      id: "textoCentro",
+      afterDraw: function (chart) {
+        let ctx = chart.ctx;
+        let chartArea = chart.chartArea;
+
+        let x = (chartArea.left + chartArea.right) / 2;
+        let y = (chartArea.top + chartArea.bottom) / 1.4;
+
+        ctx.save();
+
+        ctx.textAlign = "center";
+
+        let textoAcertos = chart.data.textoAcertos || "0 / 18";
+        let textoPorcentagemAcertos = chart.data.textoPorcentagem || "0%";
+
+        // Numero de acertos
+        ctx.font = "bold 32px Arial";
+        ctx.fillStyle = "#333";
+        ctx.fillText(resultado.num_acertos + " / 18", x, y);
+
+        // %
+        ctx.font = "20px Arial";
+        ctx.fillText(
+          (100 - (Number(resultado.num_acertos) / 100) * 18).toFixed(2) + "% ",
+          x,
+          y + 30,
+        );
+
+        ctx.restore();
+      },
+    };
     let configPorcentagem = {
       type: "doughnut",
       labels: ["Acertos", "Erros"],
@@ -252,13 +296,14 @@
         responsive: true,
         maintainAspectRatio: false,
       },
+      plugins: [pluginTextoCentral],
     };
 
     for (let i = 0; i < respostaPorcentagem.length; i++) {
       resultado = respostaPorcentagem[i];
       configPorcentagem.data.datasets[i].data.push(
-        (100 - ((Number(resultado.num_acertos) / 100) * 18)),
-        ((Number(resultado.num_acertos) * 18) / 100),
+        100 - (Number(resultado.num_acertos) / 100) * 18,
+        (Number(resultado.num_acertos) * 18) / 100,
       );
     }
 

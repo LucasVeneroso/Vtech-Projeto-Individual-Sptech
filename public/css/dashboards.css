@@ -30,6 +30,9 @@ body {
   justify-content: space-around;
 }
 .kpi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 40px;
   border-radius: 7px;
   border: 2px solid aquamarine;
