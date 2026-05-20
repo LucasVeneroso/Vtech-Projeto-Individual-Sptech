@@ -265,7 +265,7 @@
         // %
         ctx.font = "20px Arial";
         ctx.fillText(
-          (100 - (Number(resultado.num_acertos) / 100) * 18).toFixed(2) + "% ",
+          ((Number(resultado.num_acertos) / 18) * 100).toFixed(2) + "% ",
           x,
           y + 30,
         );
@@ -293,17 +293,21 @@
         plugins: {
           legend: { display: false },
         },
-        responsive: true,
-        maintainAspectRatio: false,
+        responsive: false,
+        maintainAspectRatio: true,
       },
       plugins: [pluginTextoCentral],
     };
 
     for (let i = 0; i < respostaPorcentagem.length; i++) {
       resultado = respostaPorcentagem[i];
+      let acertos = Number(resultado.num_acertos);
+      let porcentagemAcertos = (acertos / 18) * 100;
+      let porcentagemErros = 100 - porcentagemAcertos;
+
       configPorcentagem.data.datasets[i].data.push(
-        100 - (Number(resultado.num_acertos) / 100) * 18,
-        (Number(resultado.num_acertos) * 18) / 100,
+        porcentagemAcertos,
+        porcentagemErros
       );
     }
 
