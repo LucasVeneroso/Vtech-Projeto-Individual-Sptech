@@ -235,6 +235,20 @@
     const configBarras = {
       type: "bar",
       data: dadosGrafico,
+      options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              min: 0,
+              max: 3,
+              ticks: {
+                stepSize: 1,
+                color: "#212124",
+              },
+            },
+          },
+        },
     };
 
     const chartBarras = new Chart(
