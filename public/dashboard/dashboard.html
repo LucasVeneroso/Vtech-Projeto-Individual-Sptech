@@ -59,10 +59,7 @@
       <div class="kpis">
         <div class="kpi" id="Pontos_melhorar">
           <h1>Pontos a Melhorar</h1>
-          <ul id="lista_feedback_melhorar">
-            <li>primeiro</li>
-            <li>segundo</li>
-          </ul>
+          <ul id="lista_feedback_melhorar"></ul>
         </div>
         <div class="kpi">
           <h1>Acertos</h1>
@@ -70,10 +67,7 @@
         </div>
         <div class="kpi" id="Pontos_bom">
           <h1>Pontos a melhorar</h1>
-          <ul id="lista_feedback_bom">
-            <li>primeiro</li>
-            <li>segundo</li>
-          </ul>
+          <ul id="lista_feedback_bom"></ul>
         </div>
       </div>
       <div id="grafico">
@@ -186,6 +180,9 @@
       ],
     };
 
+    let mensagemRuim = "";
+    let mensagemBoa = "";
+
     for (i = 0; i < resposta.length; i++) {
       var registro = resposta[i];
       dadosGrafico.datasets[0].data.push(
@@ -196,6 +193,43 @@
         registro.s3,
         registro.iam,
       );
+
+      if (registro.historia_nuvem <= 1) {
+        mensagemRuim += "<li>História Da Nuvem</li>";
+      }
+      if (registro.nuvem <= 1) {
+        mensagemRuim += "<li>Conceitos gerais de nuvem</li>";
+      }
+      if (registro.vantagens_nuvem <= 1) {
+        mensagemRuim += "<li>Vantagens da Nuvem</li>";
+      }
+      if (registro.ec2 <= 1) {
+        mensagemRuim += "<li>Conceito de Ec2</li>";
+      }
+      if (registro.s3 <= 1) {
+        mensagemRuim += "<li>Conceito de S3</li>";
+      }
+      if (registro.iam <= 1) {
+        mensagemRuim += "<li>Conceito de IAM</li>";
+      }
+      if (registro.historia_nuvem >= 2) {
+        mensagemBoa += "<li>História Da Nuvem</li>";
+      }
+      if (registro.nuvem >= 2) {
+        mensagemBoa += "<li>Conceitos gerais de nuvem</li>";
+      }
+      if (registro.vantagens_nuvem >= 2) {
+        mensagemBoa += "<li>Vantagens da Nuvem</li>";
+      }
+      if (registro.ec2 >= 2) {
+        mensagemBoa += "<li>li>Conceito de Ec2</li>";
+      }
+      if (registro.s3 >= 2) {
+        mensagemBoa += "<li>Conceito de S3</li>";
+      }
+      if (registro.iam >= 2) {
+        mensagemBoa += "<li>Conceito de IAM</li>";
+      }
     }
 
     const configBarras = {
@@ -207,6 +241,8 @@
       document.getElementById("myChart"),
       configBarras,
     );
+    lista_feedback_melhorar.innerHTML = mensagemRuim;
+    lista_feedback_bom.innerHTML = mensagemBoa;
   }
 
   function obterDadosGraficoPorcentagem(idUsuario) {
@@ -229,7 +265,6 @@
           `Erro na obtenção dos dados p/ gráfico de porcentagem: ${error.message}`,
         );
       });
-    let acertos = sessionStorage.NUMERO_ACERTOS;
   }
 
   function contarAcertos(respostaPorcentagem, idUsuario) {
@@ -299,7 +334,7 @@
 
       configPorcentagem.data.datasets[i].data.push(
         porcentagemAcertos,
-        porcentagemErros
+        porcentagemErros,
       );
     }
 
