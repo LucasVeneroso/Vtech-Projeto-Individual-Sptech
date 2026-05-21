@@ -32,7 +32,6 @@ body {
 .kpi {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 40px;
   border-radius: 7px;
@@ -41,16 +40,24 @@ body {
   width: 24%;
   margin: 20px;
 }
-.kpi span {
-  font-size: 30px;
+.kpi li {
+  margin: 20px 0px;
 }
-#feedback.kpi {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 92%;
+#Pontos_melhorar ul{
+  margin: 30px 150px 20px 0px;
+}
+#lista_feedback_melhorar {
+  color: #e6005a;
+  font-size: 20px;
+  text-align: left;
+  }
+#lista_feedback_bom {
+  color: green;
+  font-size: 20px;
+  text-align: left;
+  }
+#Pontos_bom ul{
+  margin: 30px 150px 20px 0px;
 }
 #grafico {
   display: flex;
