@@ -43,20 +43,53 @@ body {
 .kpi li {
   margin: 20px 0px;
 }
-#Pontos_melhorar ul{
+.certificado {
+  margin-left: 20px;
+  width: 68.7vw;
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  border: 2px solid aquamarine;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+}
+.certificado h1 {
+  color: #32b9cd;
+  margin: 30px 0px 90px 0px;
+}
+.container-certificado {
+  display: flex;
+}
+.certificado-texto{
+  margin: 0px 30px 0px 20px;
+  padding: 10px;
+  display: flex;
+  text-align: left;
+  width: 30vw;
+}
+.certificado-texto p{
+  font-size: 23px;
+}
+.certificado-imagem {
+  display: flex;
+  max-height: 20vw;
+  max-width: 25vw;
+}
+#Pontos_melhorar ul {
   margin: 30px 150px 20px 0px;
 }
 #lista_feedback_melhorar {
   color: #e6005a;
   font-size: 20px;
   text-align: left;
-  }
+}
 #lista_feedback_bom {
   color: green;
   font-size: 20px;
   text-align: left;
-  }
-#Pontos_bom ul{
+}
+#Pontos_bom ul {
   margin: 30px 150px 20px 0px;
 }
 #grafico {
