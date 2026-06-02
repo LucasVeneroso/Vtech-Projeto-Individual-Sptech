@@ -172,12 +172,12 @@
     }
 
     if (criterios == 4) {
-      div_erros_login.innerHTML = `Senha Forte!`;
+      div_erros_login.innerHTML = `<span style="color: green;">Senha Forte!</span>`;
     } else if (criterios == 3) {
-      div_erros_login.innerHTML = `Senha Média. Utilize maiúsculas, minúsculas <br> e pelo menos 8 caracteres.`;
+      div_erros_login.innerHTML = `<span>Senha Média. Utilize maiúsculas, minúsculas <br> e pelo menos 8 caracteres.</span>`;
       return false;
     } else if (criterios == 2) {
-      div_erros_login.innerHTML = `Senha Insegura. A senha precisa ter pelo menos, 1 letra maiúscula, um caractere especial e um número`;
+      div_erros_login.innerHTML = `<span>Senha Insegura. A senha precisa ter pelo menos, 1 letra maiúscula, um caractere especial e um número</span>`;
       return false;
     } else if (criterios == 1) {
       div_erros_login.innerHTML = `Senha Insegura. A senha precisa ter pelo menos, 1 letra maiúscula, 1 minúscula, uma caractere especial e um número`;

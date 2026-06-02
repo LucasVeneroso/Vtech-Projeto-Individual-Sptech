@@ -101,37 +101,6 @@
     }
   }
 
-  function exibirAquario(idUsuario) {
-    let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
-
-    for (i = 0; i < todosOsGraficos.length; i++) {
-      if (todosOsGraficos[i].id != idUsuario) {
-        let elementoAtual = document.getElementById(
-          `grafico${todosOsGraficos[i].id}`,
-        );
-        if (elementoAtual.classList.contains("display-block")) {
-          elementoAtual.classList.remove("display-block");
-        }
-        elementoAtual.classList.add("display-none");
-
-        let btnAtual = document.getElementById(
-          `btnAquario${todosOsGraficos[i].id}`,
-        );
-        if (btnAtual.classList.contains("btn-pink")) {
-          btnAtual.classList.remove("btn-pink");
-        }
-        btnAtual.classList.add("btn-white");
-      }
-    }
-
-    let graficoExibir = document.getElementById(`grafico${idUsuario}`);
-    graficoExibir.classList.remove("display-none");
-    graficoExibir.classList.add("display-block");
-
-    let btnExibir = document.getElementById(`btnAquario${idUsuario}`);
-    btnExibir.classList.remove("btn-white");
-    btnExibir.classList.add("btn-pink");
-  }
 
   function obterDadosGrafico(idUsuario) {
     fetch(`/quiz/listarDados/${idUsuario}`, { cache: "no-store" })
